@@ -1,0 +1,22 @@
+/*
+    This stylesheet conains the basic styles that are typically used on every website. Most of these
+    styles cancel those set by the browser (eg removing default padding or margins).
+*/
+
+a{
+    text-decoration:none;
+}
+
+blockquote,body,div,form,html,p,section,span{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+h1,h2,h3,h4,h5,h6,ul{
+    margin:0;
+}
+
+section,footer{
+    overflow:hidden;
+}

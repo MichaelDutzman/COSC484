@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Stylish Donuts</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="ICSS/style-basic.css" />
+        <link rel="stylesheet" href="ICSS/style-global.css" />
+        <link rel="stylesheet" href="ICSS/style-homepage.css" />
+        <script type="text/javascript" src="JS/common_snippets.js"></script>
+        <script type="text/javascript" src="JS/script-main.js"></script>
+        <script type="text/javascript">
+            window.addEventListener("load",function(){
+                parallaxScroll(document.getElementById("homepage-title"));
+            });
+        </script>
+    </head>
+    <body onload="loadSite(0);">
+        <section id="homepage-title">
+            <div id="homepage-title-film">
+                <div id="navigation-container">
+                    <!--
+                        The content here is temporary. After a design idea is set, move it to addNavBar() in
+                        common_snippets.js
+                    -->
+                    <div id="navigation-bar">
+                        <ul id="nav-links">
+                            <li><a href="#" class="homepage-link"></a></li><!--
+                         --><li><a href="#">Link 1<!-- sample text --></a></li><!--
+                         --><li><a href="#">Link 2<!-- sample text --></a></li><!--
+                         --><li class="current-page"><a href="#">Link 3<!-- sample text --></a></li><!--
+                         --><li><a href="#">Link 4<!-- sample text --></a></li>
+                        </ul>
+                    </div>
+                    <div id="search-container">
+                        <form id="searchbar">
+                            <div id="search-input-container">
+                                <input type="search" name="searchquery" id="search-input" placeholder="Search for donuts..." />
+                                <button type="submit">
+                                    <div id="search-button-onhover"></div>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div id="page-title-container">
+                    <div id="title-subtitle">
+                        <h1 class="website-title" id="website-title">Stylish Donuts</h1>
+                        <span id="page-subtitle">This is what the website's subtitle looks like
+                            <!-- sample text -->
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="homepage-midsection"> <!-- TODO: figure out how to make the midsection arc upwards on the top -->
+<!--            <div class="homepage-submidsection">
+<!--                <h2>Sample Title<!-- sample text --></h2>
+<!--                <p>
+<!--                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac nisi faucibus
+<!--                    tellus auctor fermentum. Maecenas cursus massa et justo pulvinar tempor. Donec
+<!--                    mollis nibh vel viverra gravida. Duis odio nulla, sodales congue interdum non,
+<!--                    consectetur in est. Sed quis urna luctus, imperdiet orci quis, pharetra ipsum.
+<!--                    Sed rutrum metus nec risus pellentesque, eget lobortis magna tincidunt.
+<!--                </p>
+<!--            </div>
+<!--            <div class="homepage-submidsection" style="background-color:hsl(326,80%,93%);">
+<!--                <h2>Set of Options<!-- sample text --></h2>
+<!--                <div id="homepage-options-container">
+<!--                    <div class="homepage-option">
+<!--                        <div class="homepage-option-icon"></div>
+<!--                        <span class="homepage-option-label">Option 1</span>
+<!--                    </div>
+<!--                </div>
+<!--            </div>-->
+        </section>
+        <footer>
+            <!--
+                The content here is temporary. After a design idea is set, move it to loadFooter() in
+                common_snippets.js
+            -->
+            <div class="footer-section" id="footer-sitename">
+                <span class="website-title" id="footer-website-title">Stylish Donuts</span>
+            </div>
+            <div class="footer-section" id="footer-section-a">
+                <h2 class="footer-section-title">Section A<!-- sample text --></h2>
+                <ul>
+                    <li><a href="#">These<!-- sample text --></a></li>
+                    <li><a href="#">Are<!-- sample text --></a></li>
+                    <li><a href="#">Examples<!-- sample text --></a></li>
+                    <li><a href="#">Of Links<!-- sample text --></a></li>
+                </ul>
+            </div>
+            <div class="footer-section" id="footer-section-b">
+                <h2 class="footer-section-title">Section B<!-- sample text --></h2>
+                <ul>
+                    <li><a href="#">That<!-- sample text --></a></li>
+                    <li><a href="#">Could<!-- sample text --></a></li>
+                    <li><a href="#">Be<!-- sample text --></a></li>
+                    <li><a href="#">Included<!-- sample text --></a></li>
+                    <li><a href="#">At The<!-- sample text --></a></li>
+                    <li><a href="#">Bottom<!-- sample text --></a></li>
+                    <li><a href="#">Of The<!-- sample text --></a></li>
+                </ul>
+            </div>
+            <div class="footer-section" id="footer-section-b">
+                <h2 class="footer-section-title">Section C</h2>
+                <ul>
+                    <li><a href="#">Webpages</a></li>
+                    <li><a href="#">Such</a></li>
+                    <li><a href="#">As a</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">Or Socials</a></li>
+                </ul>
+            </div>
+            <div id="footer-copyright">
+                <span id="copyright-statement">COSC484 Group 4 &copy; 2022</span>
+                <!-- Maybe make "Group 4" into a link to our github or something -->
+            </div>
+        </footer>
+    </body>
+</html>

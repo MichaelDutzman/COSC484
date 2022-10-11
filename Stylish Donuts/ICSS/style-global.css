@@ -1,0 +1,193 @@
+/*
+    This stylesheet contains styles that are used by all pages on this website. This includes
+    definitions of colors, fonts, etc.
+*/
+
+@font-face{
+    font-family:"--Website-Title-Font";
+    src:url("Fonts/Handlee/Handlee-Regular.ttf");
+}
+@font-face{
+    font-family:"--Caption-Font";
+    src:url("Fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+    /*
+    When internet is available, download another font (maybe a serif font)
+    */
+}
+@font-face{
+    font-family:"--Main-Sans-Serif-Font";
+    src:url("Fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
+}
+
+
+:root{
+    /* Colors */
+        --website-title-color:hsl(326, 100%, 90%);
+        --footer-text-color:hsl(325, 18%, 80%);
+        --main-color:#f986c7;
+        --opposite-main-color:#067938;
+        --accent-color:#0088C2;
+        --black:#1b1b1b;
+
+    /* Durations */
+        --standard-transition-time:0.2s;
+
+    /* Dimentions */
+        --menu-height:80px;
+        --page-horizontal-padding:var(--menu-height);
+        /* Font Sizes */
+            --h2-font-size:48px;
+            --normal-font-size:18px;
+}
+
+
+a,h1,h2,h3,h4,h5,h6,input,p,span{
+    font-family:--Main-Sans-Serif-Font;
+}
+
+a{
+    transition:var(--standard-transition-time) all;
+}
+
+#search-container{
+    display:flex;
+}
+#searchbar{
+    /*padding-top:8px;*/
+    padding-right:4px;
+    /*padding-bottom:8px;*/
+    padding-left:16px;
+    border-radius:16px;
+    border:1px solid HSLA(0,0%,100%,0.5);
+    transition-duration:var(--standard-transition-time);
+    transition-property:all;
+
+    /* Desktop view */
+    width:60%;
+    height:32px;
+    margin:auto;
+    display:inline-block;
+}
+#searchbar:hover{
+    box-shadow:
+        0px 0px 5px 0px HSLA(0,0%,100%,0.5),
+        0px 0px 3px 0px HSLA(0,0%,100%,0.5) inset;
+}
+#searchbar.focused{
+    background-color:HSLA(0,0%,100%,0.25);
+}
+#search-input-container{
+    width:calc(100% - 4px);
+    height:100%; /*height:16px;*/
+    grid-area:searchbar;
+    display:grid;
+    grid-template-columns:auto 16px;
+    grid-template-areas:"input button";
+}
+#searchbar input{
+    border:none;
+    outline:none;
+    box-sizing:border-box;
+    vertical-align:top;
+    margin:0;
+    padding:0;
+    background:none;
+    grid-area:input;
+    color:hsla(0, 0%, 100%, 0.75);
+}
+#searchbar input::placeholder{
+    color:hsla(0, 0%, 100%, 0.5);
+    opacity:1;
+}
+#searchbar button{
+    vertical-align:top;
+    grid-area:button;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    background-color:transparent;
+    background-image:url("Images/UI Icons/search-interface-symbol.png");
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:contain;
+    border:none;
+}
+#searchbar button:hover{
+    background-image:none;
+}
+
+#searchbar button #search-button-onhover{
+    opacity:0;
+    transition-duration:var(--standard-transition-time);
+    width:100%;
+    height:100%;
+    background-image:url("Images/UI Icons/search-interface-symbol_on-hover.png");
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+#searchbar button:hover #search-button-onhover{
+    opacity:1;
+}
+
+.website-title{
+    color:var(--website-title-color);
+    font-family:--Website-Title-Font;
+    cursor:default;
+    letter-spacing:-2px;
+}
+.website-title::selection{
+    background-color:transparent;
+}
+
+footer{
+    /* height:75vh; */
+    background-color:var(--black); /* maybe make this into a subtle donut-related picture
+        (but one that can have a --black overlay) */
+    padding:40px var(--page-horizontal-padding) 20px;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-template-rows:auto 32px;
+    grid-template-areas:
+        "website-title  section-a  section-b  section-c"
+        "copyright      copyright  copyright  copyright";
+    grid-row-gap:15vh;
+    border-bottom:3px solid var(--main-color);
+}
+#footer-website-title{
+	font-size:30px;
+}
+footer h2,footer a{
+    text-transform:uppercase;
+}
+footer h2{
+    color:var(--footer-text-color);
+    font-weight:500;
+    font-size:22px;
+    margin-bottom:0.33em;
+}
+footer ul{
+    padding:0;
+}
+footer li{
+    list-style-type:none;
+}
+footer ul a{
+    color:var(--footer-text-color);
+    opacity:0.8;
+    font-size:15px;
+    font-weight:400;
+}
+footer ul a:hover{
+    opacity:1;
+}
+#footer-copyright{
+    grid-area:copyright;
+}
+#copyright-statement{
+    color:var(--footer-text-color);
+	font-size:12px;
+    text-align:center;
+    width:100%;
+    display:block;
+}
