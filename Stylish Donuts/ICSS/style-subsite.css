@@ -1,0 +1,35 @@
+﻿/*
+    This stylesheet contains styles that are used on subsites. A subsite is a page that isn't the
+    homepage.
+*/
+
+:root{
+    /* Colors */
+        --menu-background-color:hsl(326, 100%, 10%);
+    
+    /* Durations */
+    
+    /* Dimentions */
+}
+
+#subsite-title{
+    background-color:var(--menu-background-color);
+}
+
+#main-section{
+    background-color:var(--midsection-background-color);
+    padding:var(--page-horizontal-padding);
+}
+
+body{
+    display:grid;
+    grid-template-rows:
+        auto
+        1fr
+        auto;
+    grid-template-areas:
+        "menu"
+        "content"
+        "footer";
+    min-height:100vh;
+}

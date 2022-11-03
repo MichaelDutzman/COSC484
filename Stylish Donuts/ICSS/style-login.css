@@ -1,0 +1,80 @@
+@import url("style-homepage.css");
+body{
+    background-image:url("Images/Backgrounds/pexels-jose-maria-sevillano-serrano-12287227.jpg");
+    background-size:cover;
+    background-position-x:center;
+    background-position-y:50%;
+}
+section#homepage-title{
+    background-image:none;
+}
+#navigation-container{
+    display:none;
+}
+section#homepage-midsection{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-image:linear-gradient(90deg,#f986c717,#f986c701);
+    background-color:hsla(326,25%,97.5%,94%);
+}
+
+h2{
+    margin-bottom:0.375em;
+    font-weight:500;
+    font-size:27px;
+}
+
+input{
+    width:100%;
+}
+input[type=submit]{
+    width:auto;
+}
+
+/* Phone */
+/* 320px is the minimum width that needs to be supported */
+@media screen and (max-width:480px){
+    
+}
+
+
+/* Tablet */
+@media screen and (min-width:480px) and (max-width:1024px){
+
+}
+
+
+/* Desktop */
+@media screen and (min-width:1024px){
+    body{
+        display:grid;
+        grid-template-areas:
+            "title  body"
+            "footer footer";
+        grid-template-rows:
+            100vh
+            auto;
+        grid-template-columns:1fr 2fr;
+    }
+    #homepage-title{
+        grid-area:title;
+        height:auto;
+    }
+    #website-title{
+        font-size:90px;
+    }
+    #homepage-midsection{
+        grid-area:body;
+        height:auto;
+        min-height:unset;
+    }
+
+    #login-div{
+        width:50%;
+    }
+
+    footer{
+        grid-area:footer;
+    }
+}

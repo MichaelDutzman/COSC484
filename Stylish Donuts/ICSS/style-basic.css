@@ -7,7 +7,7 @@ a{
     text-decoration:none;
 }
 
-blockquote,body,div,form,html,p,section,span{
+blockquote,body,div,fieldset,form,html,input,p,section,span{
     margin:0;
     padding:0;
     box-sizing:border-box;

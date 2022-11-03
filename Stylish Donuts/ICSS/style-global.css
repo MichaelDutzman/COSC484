@@ -22,12 +22,17 @@
 
 :root{
     /* Colors */
+        --menu-link-color:hsl(326, 70%, 76%);
+        --menu-active-link-color:hsl(326, 100%, 70%);
         --website-title-color:hsl(326, 100%, 90%);
-        --footer-text-color:hsl(325, 18%, 80%);
+        --footer-text-color:hsl(326, 18%, 80%);
         --main-color:#f986c7;
         --opposite-main-color:#067938;
         --accent-color:#0088C2;
         --black:#1b1b1b;
+        --midsection-background-color:hsl(326, 25%, 97.5%);
+        --invalid-color:hsl(343, 66%, 50%);
+        --valid-color:hsl(163, 66%, 50%);
 
     /* Durations */
         --standard-transition-time:0.2s;
@@ -38,15 +43,98 @@
         /* Font Sizes */
             --h2-font-size:48px;
             --normal-font-size:18px;
+    /* Other Values */
+        --standard-transition:var(--standard-transition-time) all;
 }
 
-
-a,h1,h2,h3,h4,h5,h6,input,p,span{
+*{
     font-family:--Main-Sans-Serif-Font;
 }
 
+h1,h2,h3,h4,h5,h6{
+    font-family:--Main-Sans-Serif-Font;
+}
+h1,h2{
+    font-weight:600;
+}
+h3,h4{
+    font-weight:500;
+}
+h5,h6{
+    font-weight:400;
+}
+h1,h2,h3{
+    text-align:center;
+}
+h4,h5,h6{
+    text-align:left;
+}
+
 a{
-    transition:var(--standard-transition-time) all;
+    transition:var(--standard-transition);
+    color:var(--main-color);
+}
+a:hover{
+    text-decoration:underline;
+}
+
+#navigation-container{
+    grid-area:navigation;
+    display:grid;
+    grid-template-columns:7fr 3fr;
+    grid-template-areas:"navigation-links search";
+    background-image:linear-gradient(HSLA(0,0%,0%,0.55),HSLA(0,0%,0%,0));
+}
+#navigation-bar{
+    grid-area:navigation-links;
+    padding-left:var(--page-horizontal-padding);
+}
+#nav-links{
+    margin:0;
+    padding:0;
+    height:var(--menu-height);
+}
+#nav-links li{
+    list-style-type:none;
+    display:inline-block;
+    font-size:18px;
+    height:var(--menu-height);
+    line-height:var(--menu-height);
+    padding:0 1em;
+    vertical-align:top;
+}
+#nav-links a{
+    color:var(--menu-link-color);
+    font-family:--Main-Sans-Serif-Font;
+    text-transform:uppercase;
+    font-weight:500;
+    display:block;
+    height:var(--menu-height);
+}
+#nav-links .current-page a{
+    color:var(--menu-active-link-color);
+}
+#nav-links a::after{
+    content:'';
+    position:relative;
+    top:calc(var(--menu-height) / -2  - 1.25em);
+    background-color:var(--menu-link-color);
+    display:inline-block;
+    width:100%;
+    height:0.1em;
+    border-radius:0.1em;
+    transform:scaleX(0%);
+    transform-origin:0%;
+    transition:var(--standard-transition);
+}
+#nav-links .current-page a::after{
+    background-color:var(--menu-active-link-color);
+}
+#nav-links a:hover{
+    text-decoration:none;
+}
+#nav-links a:hover:after{
+    transform:scaleX(100%);
 }
 
 #search-container{
@@ -113,7 +201,8 @@ a{
     border:none;
 }
 #searchbar button:hover{
-    background-image:none;
+    /* background-image:none; */
+    box-shadow:none;
 }
 
 #searchbar button #search-button-onhover{
@@ -146,17 +235,20 @@ footer{
         (but one that can have a --black overlay) */
     padding:40px var(--page-horizontal-padding) 20px;
     display:grid;
-    grid-template-columns:1fr 1fr 1fr 1fr;
-    grid-template-rows:auto 32px;
-    grid-template-areas:
-        "website-title  section-a  section-b  section-c"
-        "copyright      copyright  copyright  copyright";
-    grid-row-gap:15vh;
     border-bottom:3px solid var(--main-color);
 }
 #footer-website-title{
 	font-size:30px;
 }
+/* #footer-section-a{
+    grid-area:section-a;
+}
+#footer-section-b{
+    grid-area:section-b;
+}
+#footer-section-c{
+    grid-area:section-c;
+} */
 footer h2,footer a{
     text-transform:uppercase;
 }
@@ -165,6 +257,7 @@ footer h2{
     font-weight:500;
     font-size:22px;
     margin-bottom:0.33em;
+    text-align:left;
 }
 footer ul{
     padding:0;
@@ -190,4 +283,277 @@ footer ul a:hover{
     text-align:center;
     width:100%;
     display:block;
+}
+
+fieldset{
+    border:none;
+}
+
+input{
+    /* background-color:transparent;
+    border:1px solid var(--black);
+    border-radius:0.5em;*/
+    transition:all var(--standard-transition-time);
+    margin:0.4em 0; /* This rule was made for the login page, and it might work with other pages. If
+                       if doesn't look right on other pages, it can be moved to style-login.css */
+}
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=url]{
+    border:none;
+    border-bottom:2px solid #00000000;
+    border-top:2px solid #00000000; /* this is only here to balance the input so the text sits
+                                         in the middle*/
+    background-color:#00000009;
+    padding: 0.3em 1em;
+    border-radius: 0.25em;
+    display:block;
+}
+/* input[type=text]::after{
+    content:'';
+    display:block;
+    height:2px;
+    width:100%;
+    background-color:var(--black);
+    position:relative;
+    top:0px;
+} */
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+input[type=password]:focus,
+input[type=search]:focus,
+input[type=tel]:focus,
+input[type=url]:focus{
+    border-bottom-color:var(--main-color);
+    border-radius:0px;
+    background-color:transparent;
+    box-shadow:0px 0px 5px 1px inset #00000009;
+    outline:none;
+    transition:var(--standard-transition);
+}
+input[type=text]:hover,
+input[type=email]:hover,
+input[type=number]:hover,
+input[type=password]:hover,
+input[type=search]:hover,
+input[type=tel]:hover,
+input[type=url]:hover{
+    box-shadow:0px 0px 3px 0px #00000020;
+}
+input[type=text]:not(:placeholder-shown),
+input[type=email]:not(:placeholder-shown),
+input[type=number]:not(:placeholder-shown),
+input[type=password]:not(:placeholder-shown),
+input[type=search]:not(:placeholder-shown),
+input[type=tel]:not(:placeholder-shown),
+input[type=url]:not(:placeholder-shown){
+    background-color:transparent;
+}
+input[type=text]:not(:placeholder-shown):invalid,
+input[type=email]:not(:placeholder-shown):invalid,
+input[type=number]:not(:placeholder-shown):invalid,
+input[type=password]:not(:placeholder-shown):invalid,
+input[type=search]:not(:placeholder-shown):invalid,
+input[type=tel]:not(:placeholder-shown):invalid,
+input[type=url]:not(:placeholder-shown):invalid{
+    border-bottom-color:var(--invalid-color);
+    box-shadow:0px 0px 3px -1px inset var(--invalid-color);
+}
+input[type=text]:not(:invalid):not(:placeholder-shown),
+input[type=email]:not(:invalid):not(:placeholder-shown),
+input[type=number]:not(:invalid):not(:placeholder-shown),
+input[type=password]:not(:invalid):not(:placeholder-shown),
+input[type=search]:not(:invalid):not(:placeholder-shown),
+input[type=tel]:not(:invalid):not(:placeholder-shown),
+input[type=url]:not(:invalid):not(:placeholder-shown){
+    border-bottom-color:var(--valid-color);
+}
+
+label{
+    display:block;
+    margin-top:0.5em;
+}
+
+input[type=checkbox]+label,
+input[type=radio]+label{
+    display:inline;
+    margin-left:0.5em;
+}
+
+    /*
+      An input set is a trio of elements that includes an input, a label, and a span (used for
+      errors). Because there is no css selector that selects a certain element that comes
+      before another certain element, the first element in the trio must be the input. The next
+      element must be the label, and the last is the span. The elements will be displayed in
+      the correct order (label -> input -> span) via grid styling.
+    */
+.input-set{
+    display:grid;
+    grid-template-areas:
+        "label"
+        "input"
+        "error";
+}
+.input-set>label{
+    grid-area:label;
+    opacity:0;
+    transition:var(--standard-transition);
+}
+.input-set>input:not(:placeholder-shown)+label{
+    opacity:1;
+}
+.input-set>input{
+    grid-area:input;
+}
+.input-set>span{
+    grid-area:error;
+    color:var(--invalid-color);
+    font-size:12px;
+    font-weight:500;
+    padding:0 1em;
+    cursor:default;
+    opacity:0;
+}
+.input-set>input:not(:placeholder-shown):invalid+label+span{
+    opacity:1;
+}
+
+.quantity-chooser{
+    display:grid;
+    grid-template-areas:
+        "down input up";
+    height:30px;
+}
+
+input.quantity-chooser-input{
+    text-align:center;
+    grid-area:input;
+    border-radius:0px;
+    margin:0;
+}
+
+.quantity-chooser button{
+    border-radius:0;
+    background-color:transparent;
+    color:#000000;
+    font-size:18px;
+    padding:0;
+    aspect-ratio:1;
+    height:100%;
+}
+.quantity-chooser button:hover{
+    box-shadow:none;
+}
+input.quantity-chooser-input::-webkit-outer-spin-button,
+input.quantity-chooser-input::-webkit-inner-spin-button{ /* Chrome, Safari, Edge, Opera */
+    -webkit-appearance:none;
+    margin:0;
+}
+input[type=number]{ /* Firefox */
+    -moz-appearance:textfield;
+}
+
+button,input[type=button],input[type=submit]{
+    background-color:var(--opposite-main-color);
+    color:#FFFFFF;
+    border-radius:0.5em;
+    border:1px solid var(--black);
+    padding:0.5em 1em;
+    transition:var(--standard-transition);
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+}
+button:hover,input[type=button]:hover,input[type=submit]:hover{
+    box-shadow:0px 0px 5px 0px #0000004d;
+}
+
+input.square-option-input{
+    display:none;
+}
+input.square-option-input + label.square-option-input-label{
+    display: inline-flex;
+    height: 3em;
+    width: 6em;
+    border:1.5px solid var(--main-color);
+    border-radius:0.25em;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:1em;
+    cursor:pointer;
+    transition:var(--standard-transition);
+    vertical-align:top;
+    background-color:#ffffffcc;
+}
+input.square-option-input:checked + label.square-option-input-label{
+    box-shadow:
+        0px 0px 6px 0px #00000050,
+        0px 0px 1px 0px #000000A4;
+    background-color:var(--main-color);
+    color:#ffffff;
+    border-color:#ffffff;
+}
+
+/* Phone */
+/* 320px is the minimum width that needs to be supported */
+@media screen and (max-width:480px){
+    :root{
+        --page-horizontal-padding:calc(var(--menu-height) / 3);
+    }
+
+    footer{
+        grid-template-columns:1fr;
+        grid-template-rows:auto auto auto auto 32px;
+        grid-template-areas:
+            "website-title"
+            "..."
+            "..."
+            "..."
+            "copyright";
+        grid-row-gap:7vh;
+    }
+}
+
+
+/* Tablet */
+@media screen and (min-width:480px) and (max-width:1024px){
+    :root{
+        --page-horizontal-padding:calc(var(--menu-height) / 2);
+    }
+
+    #navigation-container{
+        grid-template-columns:initial;
+        grid-template-areas:
+            "navigation-links"
+            "search";
+    }
+
+    footer{
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:auto auto 32px;
+        grid-template-areas:
+            "website-title  ..."
+            "...            ..."
+            "copyright      copyright";
+        grid-row-gap:7vh;
+    }
+}
+
+
+/* Desktop */
+@media screen and (min-width:1024px){
+    footer{
+        grid-template-columns:1fr 1fr 1fr 1fr;
+        grid-template-rows:auto 32px;
+        grid-template-areas:
+            "website-title  section-a  section-b  section-c"
+            "copyright      copyright  copyright  copyright";
+        grid-row-gap:15vh;
+    }
 }

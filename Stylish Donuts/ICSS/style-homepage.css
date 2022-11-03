@@ -2,11 +2,6 @@
     This stylesheet contains styles that are specific to the homepage.
 */
 
-:root{
-    --menu-link-color:hsl(326, 70%, 76%);
-    --menu-active-link-color:hsl(326, 100%, 70%);
-}
-
 #homepage-title{
     height:90vh;
     background-image:url("Images/Backgrounds/pexels-jose-maria-sevillano-serrano-12287227.jpg"); /* TODO: cite this*/
@@ -19,66 +14,9 @@
     background-color:HSLA(0,0%,0%,0.75);
     height:100%;
     display:grid;
-    grid-template-rows:var(--menu-height) auto;
     grid-template-areas:
         "navigation"
         "page-title";
-}
-
-#navigation-container{
-    grid-area:navigation;
-    display:grid;
-    grid-template-columns:7fr 3fr;
-    grid-template-areas:"navigation-links search";
-    background-image:linear-gradient(HSLA(0,0%,0%,0.55),HSLA(0,0%,0%,0));
-}
-#navigation-bar{
-    grid-area:navigation-links;
-    padding-left:var(--page-horizontal-padding);
-}
-#nav-links{
-    margin:0;
-    padding:0;
-    height:var(--menu-height);
-}
-#nav-links li{
-    list-style-type:none;
-    display:inline-block;
-    font-size:18px;
-    height:var(--menu-height);
-    line-height:var(--menu-height);
-    padding:0 1em;
-    vertical-align:top;
-}
-#nav-links a{
-    color:var(--menu-link-color);
-    font-family:--Main-Sans-Serif-Font;
-    text-transform:uppercase;
-    font-weight:500;
-    display:block;
-    height:var(--menu-height);
-}
-#nav-links .current-page a{
-    color:var(--menu-active-link-color);
-}
-#nav-links a::after{
-    content:'';
-    position:relative;
-    top:calc(var(--menu-height) / -2  - 1.25em);
-    background-color:var(--menu-link-color);
-    display:inline-block;
-    width:100%;
-    height:0.1em;
-    border-radius:0.1em;
-    transform:scaleX(0%);
-    transform-origin:0%;
-    transition:var(--standard-transition-time) all;
-}
-#nav-links .current-page a::after{
-    background-color:var(--menu-active-link-color);
-}
-#nav-links a:hover:after{
-    transform:scaleX(100%);
 }
 
 #page-title-container{
@@ -107,7 +45,7 @@
 
 #homepage-midsection{
     min-height:200vh;
-    background-color:hsl(326, 90%, 95%);
+    background-color:var(--midsection-background-color);
 }
 .homepage-submidsection{
     padding:0px var(--page-horizontal-padding) var(--page-horizontal-padding);
@@ -145,4 +83,27 @@
 }
 .homepage-option-label{
     text-align:center;
+}
+
+
+/* Phone */
+/* 320px is the minimum width that needs to be supported */
+@media screen and (max-width:480px){
+    
+}
+
+
+/* Tablet */
+@media screen and (min-width:480px) and (max-width:1024px){
+    #homepage-title-film{
+        grid-template-rows:calc(var(--menu-height) *2 ) auto;
+    }
+}
+
+
+/* Desktop */
+@media screen and (min-width:1024px){
+    #homepage-title-film{
+        grid-template-rows:var(--menu-height) auto;
+    }
 }

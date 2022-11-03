@@ -1,0 +1,49 @@
+/* main-section>form{
+    display:grid;
+    grid-template-areas:
+        "firstname lastname";
+} */
+ 
+
+/* Phone */
+/* 320px is the minimum width that needs to be supported */
+@media screen and (max-width:480px){
+
+}
+
+/* Tablet */
+@media screen and (min-width:480px) and (max-width:1024px){
+
+}
+
+/* Desktop */
+@media screen and (min-width:1024px){
+    form fieldset{
+        column-gap:1vw;
+    }
+    #fieldset-name{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+    #fieldset-address{
+        display:grid;
+        grid-template-columns:8fr 4fr 2fr;
+        grid-template-areas:
+            "street-adress street-adress street-adress"
+            "city          state         zip";
+    }
+    #fieldset-address .input-set:nth-child(1){ /* This should be the street adress*/
+        grid-area:street-adress;
+    }
+
+    #diet-options{
+        display:grid;
+        grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+        column-gap:1em;
+        margin-bottom:1em;
+    }
+
+    input.square-option-input + label.square-option-input-label{
+        width:auto;
+    }
+}

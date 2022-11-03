@@ -1,0 +1,32 @@
+.donut-name{
+    text-align:center;
+}
+#order-donuts{
+    margin-top:2em;
+}
+#order-donuts fieldset{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap:16px;
+    row-gap:16px;
+    margin-bottom:1em;
+}
+.donut-for-order{
+    border:1px solid var(--black);
+    padding:20px;
+}
+.donut-for-order>div{
+    margin-top: 16px;
+}
+.donut-image-container img{
+    width:100%;
+}
+
+.donut-ingredients-list li{
+    list-style-type:"-  ";
+}
+
+#order-donuts input[type=submit]{
+    width:100%;
+    font-size:32px;
+}
