@@ -44,8 +44,9 @@
 }
 
 #homepage-midsection{
-    min-height:200vh;
+    min-height:105vh;
     background-color:var(--midsection-background-color);
+    padding:100px 0px;
 }
 .homepage-submidsection{
     padding:0px var(--page-horizontal-padding) var(--page-horizontal-padding);
@@ -85,11 +86,63 @@
     text-align:center;
 }
 
+blockquote{
+    display:grid;
+    grid-template-areas:
+        "title      title  corner-tr"
+        "left-quote quote  right-quote"
+        "corner-bl  quotee quotee";
+    grid-row-gap:10px;
+    margin:0 auto;
+}
+blockquote .quote-title{
+    /* font-weight:300; */
+    grid-area:title;
+    font-size:18px;
+}
+blockquote .quote{
+    font-size:33px;
+    text-align:center;
+    grid-area:quote;
+    font-weight:300;
+}
+blockquote .quotee{
+    text-transform:uppercase;
+    grid-area:quotee;
+    text-align:right;
+    font-weight:300;
+}
+blockquote .quotation-mark{
+    background-size:32px;
+    background-repeat:no-repeat;
+    opacity:0.2;
+}
+blockquote .left-quotation-mark{
+    grid-area:left-quote;
+    background-image:url("Images/Other/left-quote.png");
+}
+blockquote .right-quotation-mark{
+    grid-area:right-quote;
+    background-image:url("Images/Other/right-quote.png");
+    background-position:bottom;
+}
+
 
 /* Phone */
 /* 320px is the minimum width that needs to be supported */
 @media screen and (max-width:480px){
     
+    
+    blockquote{
+        width:75%;
+        grid-template-columns: 32px auto 32px;
+    }
+    blockquote .quotation-mark{
+        background-size: 24px;
+    }
+    blockquote .quote{
+        font-size:24px;
+    }
 }
 
 
@@ -98,6 +151,11 @@
     #homepage-title-film{
         grid-template-rows:calc(var(--menu-height) *2 ) auto;
     }
+    
+    blockquote{
+        width:75%;
+        grid-template-columns:64px auto 64px;
+    }
 }
 
 
@@ -105,5 +163,10 @@
 @media screen and (min-width:1024px){
     #homepage-title-film{
         grid-template-rows:var(--menu-height) auto;
+    }
+
+    blockquote{
+        width:65%;
+        grid-template-columns:64px auto 64px;
     }
 }

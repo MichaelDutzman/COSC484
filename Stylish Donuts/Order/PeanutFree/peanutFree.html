@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Peanut-Free Menu</title>
+    <!--peanutFree.css-->
+    <link rel="stylesheet" type="text/css" href="peanutFree.css">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="ICSS/style-basic.css" />
+    <link rel="stylesheet" href="ICSS/style-global.css" />
+    <link rel="stylesheet" href="ICSS/style-homepage.css" />
+
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/77fe297c6d.js" crossorigin="anonymous"></script>
+    <script>
+        function thirdFunction(argument){
+            alert("Ingredients:" + argument);
+        }
+        function increaseCount(a, b) {
+        var input = b.previousElementSibling;
+        var value = parseInt(input.value, 10); 
+        
+            if(value <12){
+                value = isNaN(value)? 0 : value;
+                value ++;
+                input.value = value; 
+            }  
+        }
+      function decreaseCount(a, b) {
+        var input = b.nextElementSibling;
+        var value = parseInt(input.value, 10); 
+        if (value > 0) {
+          value = isNaN(value)? 0 : value;
+          value --;
+          input.value = value;
+        }
+      }
+      
+    function checkOut(arg){
+        var donut1= 6*(range1.value);
+        var donut2= 6*(range2.value);
+        var donut3= 6*(range3.value);
+        var donut4= 6*(range4.value);
+        var donut5= 6*(range5.value);
+        var donut6= 6*(range6.value);
+        var donut6= 6*(range6.value);
+        var donut8= 6*(range8.value);
+        var total = [donut1+donut2+donut3+donut4+donut5+donut6];
+        var order = arg[a,b,c,d,e,f,g,h];
+        a = "Lemon Potato ("+(donut1/6);
+        b= "Italian Redwine ("+(donut2/6);
+        c= "Maple Bacon ("+(donut3/6); 
+        d= "Blueberry Lemon Chia "+(donut4/6);
+        e= "Matcha ("+(donut5/6);
+        f= "Pink Raised Toasted Coconut ("+(donut6/6);
+        g= "Ginger & Caramel ("+(donut7/6);
+        h="Coconut Vanilla ("+(donut8/6);
+
+        document.write(order+'): $'+total);
+
+    }
+    
+
+    </script>
+</head>
+<body>
+    <section id="prod1" class="section-p1">
+        <h2>Peanut-Free Donuts</h2>
+        <p>Some donuts may still contain dairy, gluten, and animal byproduct</p>
+        <div class="basket">
+            <a href="checkOut.html"><i id="basket" class="fa-solid fa-basket-shopping"></i></a>
+        </div>
+        <!--https://www.yummly.com/recipe/Berliner-Donuts-9496293-->
+        <div class="pro-container">
+            <div class="pro1">
+                <img id="pic1" class="img" src="Berliner_Donuts.jpg" alt="Donut Muffins">
+                    <h4>Berliner Donuts <i onClick="thirdFunction(' whole milk, dry active yeast, jam, unsalted butter, granulated sugar, vanilla,eggs, salt, and powdered sugar ')" class="fa-solid fa-circle-info"></i></h4>
+                    <div class="desc">
+                        <p>$6</p>
+                        <div class="counter">
+                            <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                            <input  id="range1" type="text" value="0">
+                            <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                          </div>
+            </div>
+            
+        </div>
+        <!--https://www.yummly.com/recipe/Cinnamon-Sugar-Grilled-Donuts-2108749-->
+            <div class="pro1">   
+                <img id="pic2" class="img" src="Cinnamon_Sugar_Grilled_Donuts.jpg">
+                    <h4>Cinnamon Sugar Grilled Donuts <i onClick="thirdFunction(' McCormick® Cinnamon, Ground, butter, brown sugar, and refrigerated buttermilk biscuits ')" class="fa-solid fa-circle-info"></i></h4>
+                    <div class="desc">
+                    <p>$6</p>
+                    <div class="counter">
+                        <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                        <input id="range2" type="text" value="0">
+                        <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                      </div>
+                    <!-- <button onclick="checkOut(' Italian Red Wine ')" id="wine" class="button" type="submit">Add to Cart</button> -->
+                </div>
+             <!--https://www.yummly.com/recipe/Buttermilk-Old-Fashioned-Donuts-2134343-->
+            </div>
+            <div class="pro1">  
+                <img id="pic3" class="img" src="Buttermilk_Old_Fashioned_Donuts.jpg">
+                    <h4>Buttermilk Old Fashioned Donuts <i onClick="thirdFunction(' All purpose flour, baking powder, kosher salt, sugar, egg yolks, butter, sour cream, buttermilk, vegetable oil, powdered sugar, milk, buttermilk, kosher salt ')" class="fa-solid fa-circle-info"></i></h4>
+                    <div class="desc">
+                    <p>$6</p>
+                    <div class="counter">
+                        <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                        <input id="range3" type="text" value="0">
+                        <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                      </div>
+                    <!-- <button onclick="checkOut(' Maple Bacon ')" id="maple" class="button" type="submit">Add to Cart</button> -->
+            </div>
+           
+        </div>
+        <!--https://www.yummly.com/recipe/Panda-Donuts-2704854 -->
+        <div class="pro1">
+            <img id="pic4" class="img" src="Panda_Donuts.jpg">
+            <h4>Panda Donuts <i onClick="thirdFunction(' Donuts (jelly), oreo (Thins),  whole milk, vanilla extract, and powdered sugar. ')" class="fa-solid fa-circle-info"></i></h4>
+            <div class="desc">
+                <p>$6</p>
+                <div class="counter">
+                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                    <input id="range4" type="text" value="0">
+                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                  </div>
+                <!-- <button onclick="checkOut(' Blueberry Lemon Chia ')" id="chia" class="button" type="submit">Add to Cart</button> -->
+            </div>
+           
+        </div>
+        <!--https://www.yummly.com/recipe/Snowball-Donuts-9389721-->
+        <div class="pro1">
+            <img id="pic10" class="img" src="Snowball_Donuts.jpg">
+            <h4>Snowball Donuts <i onClick="thirdFunction(' Milk, cider vinegar, oil, pure vanilla extract, spelt, baking powder, sugar, salt, and powdered sugar. ')" class="fa-solid fa-circle-info"></i></h4>
+            <div class="desc">
+                <p>$6</p>
+                <div class="counter">
+                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                    <input id="range5"  type="text" value="0">
+                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                  </div>
+                <!-- <button onclick="checkOut(' Matcha ')" id="matcha" class="button" type="submit">Add to Cart</button> -->
+            </div>
+            
+        </div>
+        <!--https://www.yummly.com/recipe/Biscoff-Donuts-2057843-->
+        <div class="pro1">
+            <img id="pic6" class="img" src="Biscoff_Donuts.jpg">
+            <h4>Biscoff Donuts <i onClick="thirdFunction(' Water, active dry yeast, granulated sugar, milk, unsalted butter, large eggs, kosher salt, all purpose flour, oil, cookie butter, powdered sugar, milk, and cookie butter. ')" class="fa-solid fa-circle-info"></i></h4>
+            <div class="desc">
+                <p>$6</p>
+                <div class="counter">
+                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                    <input onclick="checkOut(' Pink Raised Toasted Coconut ')" id="range6" type="text" value="0">
+                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                  </div>
+                <!-- <button onclick="checkOut(' Pink Raised Toasted Coconut ')" id="pink" class="button" type="submit">Add to Cart</button> -->
+            </div>
+            
+        </div>
+        <!--https://www.yummly.com/recipe/S_mores-Donuts-9639821-->
+        <div class="pro1">
+            <img id="pic8" class="img" src="S'mores_Donuts.jpg">
+            <h4>S'mores Donuts <i onClick="thirdFunction(' Cake flour, unsweetened cocoa powder, graham cracker crumbs, baking powder, salt, vegetable oil, granulated sugar, brown sugar, large eggs, vanilla extract, whole milk, dark chocolate, unsalted butter, and heavy cream ')" class="fa-solid fa-circle-info"></i></h4>
+            <div class="desc">
+                <p>$6</p>
+                <div class="counter">
+                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                    <input id="range7" type="text" value="0">
+                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                  </div>
+                <!-- <button onclick="checkOut(' Ginger & Caramel ')" id="ginger" class="button" type="submit">Add to Cart</button> -->
+            </div>
+        
+        </div>
+
+        <!--https://www.yummly.com/recipe/Challah-Donuts-1852016-->
+        <div class="pro1">
+            <img id="pic12" class="img" src="Challah_Donuts.jpg">
+            <h4>Challah Donuts <i onClick="thirdFunction(' Active dry yeast, warm water, sugar, kosher salt, flour, large eggs, oil, powdered sugar, cream, and blood orange juice. ')" class="fa-solid fa-circle-info"></i></h4>
+            <div class="desc">
+                <p>$6</p>
+                <div class="counter">
+                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                    <input id="range8" type="text" value="0">
+                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                  </div>
+                <!-- <button onclick="checkOut(' Coconut Vanilla ')" id="vanilla" class="button" type="submit">Add to Cart</button> -->
+        </div>
+    </div>
+   </div> <button onclick="checkOut('Name: ')" class="button" type="submit">Add to Cart</button>
+    </section>
+</body>
+</html>

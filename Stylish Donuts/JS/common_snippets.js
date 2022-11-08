@@ -27,25 +27,22 @@ function addFooter(level){
         "    <span class=\"website-title\" id=\"footer-website-title\">Stylish Donuts</span>" +
         "</div>" +
         "<div class=\"footer-section\" id=\"footer-section-a\">" +
-        "    <h2 class=\"footer-section-title\">Order<!-- sample text --></h2>" +
+        "    <h2 class=\"footer-section-title\">Order</h2>" +
         "    <ul>" +
-        "        <li><a href=\"#\">Vegan<!-- sample text --></a></li>" +
-        "        <li><a href=\"#\">Peanut Allergy<!-- sample text --></a></li>" +
-        "        <li><a href=\"#\">Dairy Free<!-- sample text --></a></li>" +
-        "        <li><a href=\"#\">Gluten Free<!-- sample text --></a></li>" +
-        "        <li><a href=\"#\">Keto<!-- sample text --></a></li>" +
+        "        <li><a href=\"#\">Vegan</a></li>" +
+        "        <li><a href=\"#\">Peanut Allergy</a></li>" +
+        "        <li><a href=\"#\">Dairy Free</a></li>" +
+        "        <li><a href=\"#\">Gluten Free</a></li>" +
+        "        <li><a href=\"#\">Keto</a></li>" +
         "    </ul>" +
         "</div>" +
         "<div class=\"footer-section\" id=\"footer-section-b\">" +
-        "    <h2 class=\"footer-section-title\">Section B<!-- sample text --></h2>" +
+        "    <h2 class=\"footer-section-title\">Connect</h2>" +
         "    <ul>" +
-        "        <li><a href=\"#\">That<!-- sample text --></a></li>" +
-        "        <li><a href=\"#\">Could<!-- sample text --></a></li>" +
-        "        <li><a href=\"#\">Be<!-- sample text --></a></li>" +
-        "        <li><a href=\"#\">Included<!-- sample text --></a></li>" +
-        "        <li><a href=\"#\">At The<!-- sample text --></a></li>" +
-        "        <li><a href=\"#\">Bottom<!-- sample text --></a></li>" +
-        "        <li><a href=\"#\">Of The<!-- sample text --></a></li>" +
+        "        <li><a href=\"#\">GitHub</a></li>" +
+        "        <li><a href=\"#\">LinkedIn</a></li>" +
+        "        <li><a href=\"#\">Facebook</a></li>" +
+        "        <li><a href=\"#\">Instagram</a></li>" +
         "    </ul>" +
         "</div>" +
         "<div class=\"footer-section\" id=\"footer-section-c\">" +
@@ -64,21 +61,23 @@ function addFooter(level){
         "</div>";
 
 
-    footer.innerHTML=footerHTML;
+    footer.innerHTML=editLinks(footerHTML,level);
 }
 
 function addNavBar(level){
     const navElement=document.getElementById("navigation-container");
     //getSnippetFromFile("nav-bar.html",navElement,level);
+
+    //class="current-page" should be added to the <li> that contains the link to the current page
     var navBarHTML=
         "<div id=\"navigation-bar\">" +
         "    <ul id=\"nav-links\">" +
-        "        <li><a href=\"#\" class=\"homepage-link\"></a></li><!--" +
-        "     --><li><a href=\"#\">Order<!-- sample text --></a></li><!--" +
-        "     --><li><a href=\"#\">Account<!-- sample text --></a></li><!--" +
-        "     --><li class=\"current-page\"><a href=\"#\">Cart<!-- sample text --></a></li><!--" +
-        "     --><li><a href=\"#\">About<!-- sample text --></a></li>" +
-        "    </ul>" +
+        "        <li><a href=\"index.html\" class=\"homepage-link\"><img src=\"ICSS/Images/Logos/sd_donut_logo.png\" /></a></li><!--" +
+        "     --><li><a href=\"Order/default.html\">Order<!-- sample text --></a></li><!--" +
+        "     --><li><a href=\"Account/login.html\">Account<!-- sample text --></a></li><!--" +
+//      "     --><li><a href=\"#\">Cart<!-- sample text --></a></li><!--" +
+//      "     --><li><a href=\"#\">About<!-- sample text --></a></li>" +
+        "<!----></ul>" +
         "</div>" +
         "<div id=\"search-container\">" +
         "    <form id=\"searchbar\">" +
@@ -90,8 +89,8 @@ function addNavBar(level){
         "        </div>" +
         "    </form>" +
         "</div>";
-    
-    navElement.innerHTML=navBarHTML;
+    //console.log(navBarHTML);
+    navElement.innerHTML=editLinks(navBarHTML,level);
 }
 
 function getSnippetFromFile(filename,element,level){
@@ -107,5 +106,6 @@ function getSnippetFromFile(filename,element,level){
 
 function editLinks(str,level){
     var dots="../".repeat(level);
-    return str.replaceAll("href=\"","href=\""+dots);
+    return str.replaceAll("href=\"","href=\""+dots)
+              .replaceAll("src=\"","src=\""+dots);
 }

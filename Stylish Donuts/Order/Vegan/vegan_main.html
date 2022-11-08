@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vegan Menu</title>
+    <link rel="stylesheet" type="text/css" href="vegan.css">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="ICSS/style-basic.css" />
+    <link rel="stylesheet" href="ICSS/style-global.css" />
+    <link rel="stylesheet" href="ICSS/style-homepage.css" />
+
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/77fe297c6d.js" crossorigin="anonymous"></script>
+    <script>
+        function thirdFunction(argument){
+            alert("Ingredients:" + argument);
+        }
+        function increaseCount(a, b) {
+        var input = b.previousElementSibling;
+        var value = parseInt(input.value, 10); 
+        
+            if(value <12){
+                value = isNaN(value)? 0 : value;
+                value ++;
+                input.value = value; 
+            }  
+        }
+      function decreaseCount(a, b) {
+        var input = b.nextElementSibling;
+        var value = parseInt(input.value, 10); 
+        if (value > 0) {
+          value = isNaN(value)? 0 : value;
+          value --;
+          input.value = value;
+        }
+      }
+      
+    function checkOut(arg){
+        var donut1= 6*(range1.value);
+        var donut2= 6*(range2.value);
+        var donut3= 6*(range3.value);
+        var donut4= 6*(range4.value);
+        var donut5= 6*(range5.value);
+        var donut6= 6*(range6.value);
+        var donut6= 6*(range6.value);
+        var donut8= 6*(range8.value);
+        var total = [donut1+donut2+donut3+donut4+donut5+donut6];
+        var order = arg[a,b,c,d,e,f,g,h];
+        a = "Lemon Potato ("+(donut1/6);
+        b= "Italian Redwine ("+(donut2/6);
+        c= "Maple Bacon ("+(donut3/6); 
+        d= "Blueberry Lemon Chia "+(donut4/6);
+        e= "Matcha ("+(donut5/6);
+        f= "Pink Raised Toasted Coconut ("+(donut6/6);
+        g= "Ginger & Caramel ("+(donut7/6);
+        h="Coconut Vanilla ("+(donut8/6);
+
+        document.write(order+'): $'+total);
+
+    }
+    
+
+    </script>
+</head>
+<body>
+    <section id="prod1" class="section-p1">
+        <h2>Vegan Donuts</h2>
+        <p>Some donuts may still contain gluten and animal byproduct</p>
+        <div class="basket">
+            <a href="checkOut.html"><i id="basket" class="fa-solid fa-basket-shopping"></i></a>
+        </div>
+        
+        <div class="pro-container">
+            <div class="pro1">
+                <img id="pic1" class="img" src="cinnamonsugar.jpg" alt="Cinnamon Sugar Donut">
+                    <h4>Vegan Cinnamon Sugar <i onClick="thirdFunction('  all purpose flour, granulated sugar, baking powder, salt, ground cinnamon, soy milk, applesauce, vegan butter, pure vanilla extract ')" class="fa-solid fa-circle-info"></i></h4>
+                    <div class="desc">
+                        <p>$6</p>
+                        <div class="counter">
+                            <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                            <input  id="range1" type="text" value="0">
+                            <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                          </div>
+            </div>
+            
+        </div>
+            <div class="pro1">   
+                <img id="pic2" class="img" src="jelly.jpg">
+                    <h4>Jelly Vegan Donut <i onClick="thirdFunction(' unsweetened soy milk, yeast, granulated sugar, unsweetened applesauce, vegan butter, pure vanilla extract, salt,  all purpose flour, vegetable oil, fruit jelly, powdered sugar ')" class="fa-solid fa-circle-info"></i></h4>
+                    <div class="desc">
+                    <p>$6</p>
+                    <div class="counter">
+                        <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                        <input id="range2" type="text" value="0">
+                        <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                      </div>
+                    <!-- <button onclick="checkOut(' Jelly Vegan Donut ')" id="jelly" class="button" type="submit">Add to Cart</button> -->
+                </div>
+             
+            </div>
+            <div class="pro1">  
+                <img id="pic3" class="img" src="bostoncream.jpg">
+                    <h4>Vegan Boston Cream <i onClick="thirdFunction(' soy milk, instant yeast, sugar, applesauce, vegan butter, vanilla extract, salt, all purpose flour, vegetable oil, Vegan Custard,  chocolate chips ')" class="fa-solid fa-circle-info"></i></h4>
+                    <div class="desc">
+                    <p>$6</p>
+                    <div class="counter">
+                        <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                        <input id="range3" type="text" value="0">
+                        <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                      </div>
+                    <!-- <button onclick="checkOut(' Vegan Boston Cream')" id="boston" class="button" type="submit">Add to Cart</button> -->
+            </div>
+           
+        </div>
+        <div class="pro1">
+            <img id="pic4" class="img" src="vegan-brioche.jpg">
+            <h4>Vegan Brioche with Vanilla Glaze <i onClick="thirdFunction(' almond milk, yeast, all purpose flour, sugar, pink salt, pure vanilla extract, vanilla bean, applesauce, vegan butter, vegetable oil ')" class="fa-solid fa-circle-info"></i></h4>
+            <div class="desc">
+                <p>$6</p>
+                <div class="counter">
+                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                    <input id="range4" type="text" value="0">
+                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                  </div>
+                <!-- <button onclick="checkOut(' Vegan Brioche with Vanilla Glaze ')" id="brioche" class="button" type="submit">Add to Cart</button> -->
+            </div>
+           
+        </div>
+        <div class="pro1">
+            <img id="pic10" class="img" src="Vegan-Lemon.jpg">
+            <h4>Soft-Baked Lemon with Lemon Glaze <i onClick="thirdFunction(' oat flour, almond flour, baking soda, baking powder, salt, almond milk, lemon juice, lemon zest,  coconut oil, coconut sugar, maple syrup, vanilla extract ')" class="fa-solid fa-circle-info"></i></h4>
+            <div class="desc">
+                <p>$6</p>
+                <div class="counter">
+                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                    <input id="range5"  type="text" value="0">
+                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                  </div>
+                <!-- <button onclick="checkOut(' Soft-Baked Lemon with Lemon Glaze ')" id="lemon" class="button" type="submit">Add to Cart</button> -->
+            </div>
+            
+        </div>
+        <div class="pro1">
+            <img id="pic6" class="img" src="vegan-pb-banana-donuts.jpg">
+            <h4>Peanut Butter Banana Donuts <i onClick="thirdFunction(' Banana, almond milk, peanut butter, coconut oil, vanilla paste, cane sugar, all-purpose flour, baking powder, cinnamon powder, salt, nutmeg, chocolate chips ')" class="fa-solid fa-circle-info"></i></h4>
+            <div class="desc">
+                <p>$6</p>
+                <div class="counter">
+                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                    <input onclick="checkOut(' Pink Raised Toasted Coconut ')" id="range6" type="text" value="0">
+                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                  </div>
+                <!-- <button onclick="checkOut(' Peanut Butter Banana Donuts ')" id="pb" class="button" type="submit">Add to Cart</button> -->
+            </div>
+            
+        </div>
+        <div class="pro1">
+            <img id="pic8" class="img" src="Pistachio-Doughnuts.jpg">
+            <h4>Coconut Orange Pistachio Donuts <i onClick="thirdFunction(' granulated sugar, applesauce, coconut oil, orange juice, coconut milk, orange zest, flour, ground pistachios, baking powder, salt, powdered sugar ')" class="fa-solid fa-circle-info"></i></h4>
+            <div class="desc">
+                <p>$6</p>
+                <div class="counter">
+                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                    <input id="range7" type="text" value="0">
+                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                  </div>
+                <!-- <button onclick="checkOut(' Coconut Orange Pistachio Donuts ')" id="orange" class="button" type="submit">Add to Cart</button> -->
+            </div>
+        
+        </div>
+
+        <div class="pro1">
+            <img id="pic12" class="img" src="Toasted_Coconut_Baked_Donuts_Vegan.jpg">
+            <h4>Toasted Coconut Baked Donut with Mango Glaze <i onClick="thirdFunction(' aquafaba, cream of tartar, almond flour, oat flour, tapioca starch, shredded coconut, salt, coconut (milk, butter, sugar), vanilla extract, mango cubes, cornstarch ')" class="fa-solid fa-circle-info"></i></h4>
+            <div class="desc">
+                <p>$6</p>
+                <div class="counter">
+                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                    <input id="range8" type="text" value="0">
+                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                  </div>
+                <!-- <button onclick="checkOut(' Toasted Coconut Baked Donut with Mango Glaze ')" id="toasted" class="button" type="submit">Add to Cart</button> -->
+        </div>
+    </div>
+   </div> <button onclick="checkOut('Name: ')" class="button" type="submit">Add to Cart</button>
+    </section>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dairy-Free Menu</title>
+    <link rel="stylesheet" type="text/css" href="dairyFree.css">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../../ICSS/style-basic.css" />
+    <link rel="stylesheet" href="../../ICSS/style-global.css" />
+    <link rel="stylesheet" href="../../ICSS/style-subsite.css" />
+
+    <link rel="icon" href="../../ICSS/Images/Logos/sd_donut_logo_small.png" />
+    <meta charset="UTF-8">
+    
+    <script type="text/javascript" src="../../JS/common_snippets.js"></script>
+    <script type="text/javascript" src="../../JS/script-main.js"></script>
+    <script src="https://kit.fontawesome.com/77fe297c6d.js" crossorigin="anonymous"></script>
+    <script>
+        function thirdFunction(argument){
+            alert("Ingredients:" + argument);
+        }
+        function increaseCount(a, b) {
+        var input = b.previousElementSibling;
+        var value = parseInt(input.value, 10); 
+        
+            if(value <12){
+                value = isNaN(value)? 0 : value;
+                value ++;
+                input.value = value; 
+            }  
+        }
+      function decreaseCount(a, b) {
+        var input = b.nextElementSibling;
+        var value = parseInt(input.value, 10); 
+        if (value > 0) {
+          value = isNaN(value)? 0 : value;
+          value --;
+          input.value = value;
+        }
+      }
+      
+    function checkOut(arg){
+        var donut1= 6*(range1.value);
+        var donut2= 6*(range2.value);
+        var donut3= 6*(range3.value);
+        var donut4= 6*(range4.value);
+        var donut5= 6*(range5.value);
+        var donut6= 6*(range6.value);
+        var donut6= 6*(range6.value);
+        var donut8= 6*(range8.value);
+        var total = [donut1+donut2+donut3+donut4+donut5+donut6];
+        var order = arg[a,b,c,d,e,f,g,h];
+        a = "Lemon Potato ("+(donut1/6);
+        b= "Italian Redwine ("+(donut2/6);
+        c= "Maple Bacon ("+(donut3/6); 
+        d= "Blueberry Lemon Chia "+(donut4/6);
+        e= "Matcha ("+(donut5/6);
+        f= "Pink Raised Toasted Coconut ("+(donut6/6);
+        g= "Ginger & Caramel ("+(donut7/6);
+        h="Coconut Vanilla ("+(donut8/6);
+
+        document.write(order+'): $'+total);
+
+    }
+
+    // maybe add ingredients to donut objects
+    var dairyFree={
+        lemonFlavoredPotato:{
+            name:"Lemon Potato",
+            price:6.00,
+            amount:0
+        },
+        italianRedwine:{
+            name:"Italian Redwine",
+            price:6.00,
+            amount:0
+        },
+        mapleBacon:{
+            name:"Maple Bacon",
+            price:6.00,
+            amount:0
+        },
+        blueberryLemonChia:{
+            name:"Blueberry Lemon Chia",
+            price:6.00,
+            amount:0
+        },
+        matcha:{
+            name:"Matcha",
+            price:6.00,
+            amount:0
+        },
+        pinkRaisedToastedCoconut:{
+            name:"Pink Raised Toasted Coconut",
+            price:6.00,
+            amount:0
+        },
+        gingerCaramel:{
+            name:"Ginger & Caramel",
+            price:6.00,
+            amount:0
+        },
+        coconutVanilla:{
+            name:"Coconut Vanilla",
+            price:6.00,
+            amount:0
+        },
+    };
+
+    function addToCart(){
+        var donuts=[];
+        var prices=[]; // this is an array just in case the prices change from all being $6
+        for(var i=1;true;i++){ // get amounts from inputs
+            try{ // try to keep finding inputs with the name range1, range2, etc. ...
+                donuts[(i-1)]=parseInt(document.getElementById("range"+i).value);
+            }
+            catch(e){ // ... and if you reach one that doesn't exist, then stop searching
+                break;
+            }
+        }
+
+        for(var i=0;i<donuts.length;i++){
+            prices[i]=6; // all prices are set to $6. A different statement would need to be written if prices change from all being $6
+        }
+    }
+    
+    function updateCart(inputID){
+        var amount=parseInt(document.getElementById(inputID).value);
+        document.getElementById("cart-donut-amount-"+inputID).innerHTML=amount;
+        dairyFree[inputID].amount=amount;
+        document.getElementById("cart-donut-price-"+inputID).innerHTML="($"+(dairyFree[inputID].price*amount)+")";
+        
+        var total=0;
+        for(var donut in dairyFree){
+            total+=(dairyFree[donut].price*dairyFree[donut].amount);
+        }
+        document.getElementById("cart-total").innerHTML=total;
+    }
+
+    function writeHTML(){
+        for(x in dairyFree){
+            document.getElementById("cart-details-container").innerHTML+=
+            "<div class=\"cart-details\" id=\"cart-details-"+x+"\">\n" +
+            "    <span class=\"cart-donut-name\" id=\"cart-donut-name-"+x+"\">"+dairyFree[x].name+"</span>\n" +
+            "    <span class=\"cart-donut-amount\" id=\"cart-donut-amount-"+x+"\">0</span>\n" +
+            "</div>\n";
+        }
+    }
+    </script>
+    <style>
+        .cart-donut-name{
+            font-weight:700;
+        }
+    </style>
+</head>
+<body onload="loadSite(2);">
+    <section id="subsite-title">
+        <div id="navigation-container">
+            <!--
+                Nothing needs to go here, the contents will be autogenerated
+                from common_snippets.js
+            -->
+        </div>
+    </section>
+    <section id="main-section">
+        <section id="prod1" class="section-p1">
+            <h2>Dairy-Free Donuts</h2>
+            <p>Some donuts may still contain nuts, gluten, and animal byproduct</p>
+            <div class="basket">
+                <a href="checkOut.html"><i id="basket" class="fa-solid fa-basket-shopping"></i></a>
+            </div>
+            <form action="../checkOut.html" method="get">
+                <div class="pro-container">
+                    <div class="pro1">
+                        <img id="pic1" class="img" src="lemon.jpg" alt="Lemon-flavered Potato Donut">
+                        <h4>Lemon-Flavored Potato <i onClick="thirdFunction(' lemon, potatoes, peanut oil, granulated sugar, eggs, salt, and powdered sugar ')" class="fa-solid fa-circle-info"></i></h4>
+                        <div class="desc">
+                            <p>$6</p>
+                            <div class="counter">
+                                <span class="down" onClick='decreaseCount(event, this); updateCart("lemonFlavoredPotato");'>-</span>
+                                <input id="lemonFlavoredPotato" name="lemonFlavoredPotato" type="text" value="0" onchange='updateCart("lemonFlavoredPotato");'>
+                                <span class="up"  onClick='increaseCount(event, this); updateCart("lemonFlavoredPotato");'>+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pro1">   
+                        <img id="pic2" class="img" src="redwine.jpg">
+                        <h4>Italian Red Wine <i onClick="thirdFunction(' Red wine, extra-virgin olive oil, brown sugar, salt, flour, and baking powder ')" class="fa-solid fa-circle-info"></i></h4>
+                        <div class="desc">
+                            <p>$6</p>
+                            <div class="counter">
+                                <span class="down" onClick='decreaseCount(event, this); updateCart("italianRedwine");'>-</span>
+                                <input id="italianRedwine" name="italianRedwine" type="text" value="0">
+                                <span class="up"  onClick='increaseCount(event, this); updateCart("italianRedwine");'>+</span>
+                            </div>
+                            <!-- <button onclick="checkOut(' Italian Red Wine ')" id="wine" class="button" type="submit">Add to Cart</button> -->
+                        </div>
+                    </div>
+                    <div class="pro1">  
+                        <img id="pic3" class="img" src="maple.jpg">
+                        <h4>Maple Bacon <i onClick="thirdFunction(' maple syrup, bacon, cinnamon, coconut milk, apple cider vinegar, coconut sugar, coconut oil, vanilla extract, maple extract, powdered sugar, flour, baking powder, baking soda, and salt ')" class="fa-solid fa-circle-info"></i></h4>
+                        <div class="desc">
+                            <p>$6</p>
+                            <div class="counter">
+                                <span class="down" onClick='decreaseCount(event, this); updateCart("mapleBacon");'>-</span>
+                                <input id="mapleBacon" name="mapleBacon" type="text" value="0">
+                                <span class="up"  onClick='increaseCount(event, this); updateCart("mapleBacon");'>+</span>
+                            </div>
+                            <!-- <button onclick="checkOut(' Maple Bacon ')" id="maple" class="button" type="submit">Add to Cart</button> -->
+                        </div>
+                    </div>
+                    <div class="pro1">
+                        <img id="pic4" class="img" src="blueberry.jpg">
+                        <h4>Blueberry Lemon Chia <i onClick="thirdFunction(' lemon, blueberry, chia seeds, brown sugar, nutmeg, almond milk, vanilla extract, powdered sugar, flour, baking powder, and salt ')" class="fa-solid fa-circle-info"></i></h4>
+                        <div class="desc">
+                            <p>$6</p>
+                            <div class="counter">
+                                <span class="down" onClick='decreaseCount(event, this); updateCart("blueberryLemonChia");'>-</span>
+                                <input id="blueberryLemonChia" name="blueberryLemonChia" type="text" value="0">
+                                <span class="up"  onClick='increaseCount(event, this); updateCart("blueberryLemonChia");'>+</span>
+                            </div>
+                            <!-- <button onclick="checkOut(' Blueberry Lemon Chia ')" id="chia" class="button" type="submit">Add to Cart</button> -->
+                        </div>
+                    </div>
+                    <div class="pro1">
+                        <img id="pic10" class="img" src="matcha.jpg">
+                        <h4>Matcha <i onClick="thirdFunction(' matcha powder, cake flour, brown sugar, egg, oil, almond milk, and powdered sugar ')" class="fa-solid fa-circle-info"></i></h4>
+                        <div class="desc">
+                            <p>$6</p>
+                            <div class="counter">
+                                <span class="down" onClick='decreaseCount(event, this); updateCart("matcha");'>-</span>
+                                <input id="matcha" name="matcha"  type="text" value="0">
+                                <span class="up"  onClick='increaseCount(event, this); updateCart("matcha");'>+</span>
+                            </div>
+                            <!-- <button onclick="checkOut(' Matcha ')" id="matcha" class="button" type="submit">Add to Cart</button> -->
+                        </div>
+                    </div>
+                    <div class="pro1">
+                        <img id="pic6" class="img" src="pink.jpg">
+                        <h4>Pink Raised with Toasted Coconut <i onClick="thirdFunction(' Coconut, vanilla extract, eggs, light corn syrup, pink food coloring, nutmeg, bread flour, vegetable shortening, canola oil, yeast, granulated sugar, baking powder, and salt ')" class="fa-solid fa-circle-info"></i></h4>
+                        <div class="desc">
+                            <p>$6</p>
+                            <div class="counter">
+                                <span class="down" onClick='decreaseCount(event, this); updateCart("pinkRaisedToastedCoconut");'>-</span>
+                                <input id="pinkRaisedToastedCoconut" name="pinkRaisedToastedCoconut" type="text" value="0">
+                                <span class="up"  onClick='increaseCount(event, this); updateCart("pinkRaisedToastedCoconut");'>+</span>
+                            </div>
+                            <!-- <button onclick="checkOut(' Pink Raised Toasted Coconut ')" id="pink" class="button" type="submit">Add to Cart</button> -->
+                        </div>
+                        
+                    </div>
+                    <div class="pro1">
+                        <img id="pic8" class="img" src="ginger.jpg">
+                        <h4>Ginger & Caramel <i onClick="thirdFunction(' cashew, linseed, chia seeds, dates, ginger, turmeric, coconut, coconut oil, liquid sweetener, cocao nibs, almonds ')" class="fa-solid fa-circle-info"></i></h4>
+                        <div class="desc">
+                            <p>$6</p>
+                            <div class="counter">
+                                <span class="down" onClick='decreaseCount(event, this); updateCart("gingerCaramel");'>-</span>
+                                <input id="gingerCaramel" name="gingerCaramel" type="text" value="0">
+                                <span class="up"  onClick='increaseCount(event, this); updateCart("gingerCaramel");'>+</span>
+                            </div>
+                            <!-- <button onclick="checkOut(' Ginger & Caramel ')" id="ginger" class="button" type="submit">Add to Cart</button> -->
+                        </div>
+                    
+                    </div>
+                    <div class="pro1">
+                        <img id="pic12" class="img" src="cocovanilla.jpg">
+                        <h4>Coconut Vanilla <i onClick="thirdFunction(' coconut, coconut oil, coconut milk, cane sugar, applesauce, powdered sugar, gluten-free flour, baking powder, baking soda, and salt ')" class="fa-solid fa-circle-info"></i></h4>
+                        <div class="desc">
+                            <p>$6</p>
+                            <div class="counter">
+                                <span class="down" onClick='decreaseCount(event, this); updateCart("coconutVanilla");'>-</span>
+                                <input id="coconutVanilla" name="coconutVanilla" type="text" value="0">
+                                <span class="up"  onClick='increaseCount(event, this); updateCart("coconutVanilla");'>+</span>
+                            </div>
+                            <!-- <button onclick="checkOut(' Coconut Vanilla ')" id="vanilla" class="button" type="submit">Add to Cart</button> -->
+                        </div>
+                    </div>
+                </div>
+                <button onclick="addToCart();" class="button" type="submit">Add to Cart</button>
+        </section>
+        <div id="cart-details-container">
+            <div class="cart-details" id="cart-details-lemonFlavoredPotato">
+                <span class="cart-donut-name" id="cart-donut-name-lemonFlavoredPotato">Lemon Potato:</span>
+                <span class="cart-donut-amount" id="cart-donut-amount-lemonFlavoredPotato">0</span>
+                <span class="cart-donut-price" id="cart-donut-price-lemonFlavoredPotato">($0)</span>
+            </div>
+            <div class="cart-details" id="cart-details-italianRedwine">
+                <span class="cart-donut-name" id="cart-donut-name-italianRedwine">Italian Redwine:</span>
+                <span class="cart-donut-amount" id="cart-donut-amount-italianRedwine">0</span>
+                <span class="cart-donut-price" id="cart-donut-price-italianRedwine">($0)</span>
+            </div>
+            <div class="cart-details" id="cart-details-mapleBacon">
+                <span class="cart-donut-name" id="cart-donut-name-mapleBacon">Maple Bacon:</span>
+                <span class="cart-donut-amount" id="cart-donut-amount-mapleBacon">0</span>
+                <span class="cart-donut-price" id="cart-donut-price-mapleBacon">($0)</span>
+            </div>
+            <div class="cart-details" id="cart-details-blueberryLemonChia">
+                <span class="cart-donut-name" id="cart-donut-name-blueberryLemonChia">Blueberry Lemon Chia:</span>
+                <span class="cart-donut-amount" id="cart-donut-amount-blueberryLemonChia">0</span>
+                <span class="cart-donut-price" id="cart-donut-price-blueberryLemonChia">($0)</span>
+            </div>
+            <div class="cart-details" id="cart-details-matcha">
+                <span class="cart-donut-name" id="cart-donut-name-matcha">Matcha:</span>
+                <span class="cart-donut-amount" id="cart-donut-amount-matcha">0</span>
+                <span class="cart-donut-price" id="cart-donut-price-matcha">($0)</span>
+            </div>
+            <div class="cart-details" id="cart-details-pinkRaisedToastedCoconut">
+                <span class="cart-donut-name" id="cart-donut-name-pinkRaisedToastedCoconut">Pink Raised Toasted Coconut:</span>
+                <span class="cart-donut-amount" id="cart-donut-amount-pinkRaisedToastedCoconut">0</span>
+                <span class="cart-donut-price" id="cart-donut-price-pinkRaisedToastedCoconut">($0)</span>
+            </div>
+            <div class="cart-details" id="cart-details-gingerCaramel">
+                <span class="cart-donut-name" id="cart-donut-name-gingerCaramel">Ginger &amp; Caramel:</span>
+                <span class="cart-donut-amount" id="cart-donut-amount-gingerCaramel">0</span>
+                <span class="cart-donut-price" id="cart-donut-price-gingerCaramel">($0)</span>
+            </div>
+            <div class="cart-details" id="cart-details-coconutVanilla">
+                <span class="cart-donut-name" id="cart-donut-name-coconutVanilla">Coconut Vanilla:</span>
+                <span class="cart-donut-amount" id="cart-donut-amount-coconutVanilla">0</span>
+                <span class="cart-donut-price" id="cart-donut-price-coconutVanilla">($0)</span>
+            </div>
+            <br />
+            <div>
+                Total: $<span id="cart-total">0</span>
+            </div>
+        </div>
+    </section>
+    <footer>
+
+    </footer>
+</body>
+</html>

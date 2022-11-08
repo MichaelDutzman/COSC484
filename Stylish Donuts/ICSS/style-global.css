@@ -111,6 +111,10 @@ a:hover{
     display:block;
     height:var(--menu-height);
 }
+#nav-links li img{
+    height:1.75em;
+    vertical-align:middle;
+}
 #nav-links .current-page a{
     color:var(--menu-active-link-color);
 }
@@ -490,6 +494,9 @@ input.square-option-input + label.square-option-input-label{
     transition:var(--standard-transition);
     vertical-align:top;
     background-color:#ffffffcc;
+}
+input.square-option-input + label.square-option-input-label:hover{
+    background-color:hsl(326, 91%, 98%);
 }
 input.square-option-input:checked + label.square-option-input-label{
     box-shadow:

@@ -1,0 +1,50 @@
+.diet-container{
+    width:100%;
+    margin:30px 0;
+    height:300px;
+    background-color:var(--main-color);
+    box-shadow:0px 0px 30px 0px #00000040 inset;
+    transition:var(--standard-transition);
+    background-size:cover;
+    background-position:center;
+    /* border-bottom:3px solid #FFFFFF; */
+}
+.diet-container:hover{
+    box-shadow:none;
+}
+.diet-container a{
+    color:#ffffff;
+    display:block;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:#00000060;
+    font-size:40px;
+}
+.diet-container a:hover{
+    text-decoration:none;
+    background-color:#00000050;
+}
+
+#diet-vegan{
+    background-image:url("Images/Backgrounds/Diets/pexels-bulbfish-1143754.jpg");
+    /* Source https://www.pexels.com/photo/sliced-tomato-and-avocado-on-white-plate-1143754/ */
+}
+#diet-peanutAllergy{
+    background-image:url("Images/Backgrounds/Diets/pexels-digital-buggu-176169.jpg");
+    /* Source: https://www.pexels.com/photo/beige-and-purple-beans-176169/ */
+}
+#diet-dairyFree{
+    background-image:url("Images/Backgrounds/Diets/pexels-polina-tankilevitch-4518599.jpg");
+    /* Source: https://www.pexels.com/photo/photo-of-soybeans-in-white-ceramic-bowl-4518599/ */
+}
+#diet-glutenFree{
+    background-image:url("Images/Backgrounds/Diets/pexels-pixabay-265216.jpg");
+    /* Source https://www.pexels.com/photo/agriculture-arable-barley-blur-265216/ */
+}
+#diet-keto{
+    background-image:url("Images/Backgrounds/Diets/pexels-jj-jordan-10763771.jpg");
+    /* Source: https://www.pexels.com/photo/a-person-catching-a-pack-of-keto-bread-on-air-10763771/ */
+}

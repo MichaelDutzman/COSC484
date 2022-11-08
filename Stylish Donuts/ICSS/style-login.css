@@ -15,7 +15,7 @@ section#homepage-midsection{
     display:flex;
     justify-content:center;
     align-items:center;
-    background-image:linear-gradient(90deg,#f986c717,#f986c701);
+    background-image:linear-gradient(90deg,#f986c707,#f986c701);
     background-color:hsla(326,25%,97.5%,94%);
 }
 

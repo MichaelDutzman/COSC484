@@ -12,8 +12,13 @@
     margin-bottom:1em;
 }
 .donut-for-order{
-    border:1px solid var(--black);
+    border: 1px solid #e368c4;
     padding:20px;
+    border-radius:23px;
+    transition:0.2s ease;
+}
+.donut-for-order:hover{
+    box-shadow:20px 20px 30px rgba(0,0,0,0.06);
 }
 .donut-for-order>div{
     margin-top: 16px;
