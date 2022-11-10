@@ -507,6 +507,11 @@ input.square-option-input:checked + label.square-option-input-label{
     border-color:#ffffff;
 }
 
+.pro1 h4{
+    margin: 1.33em 0;
+    text-align: center;
+}
+
 /* Phone */
 /* 320px is the minimum width that needs to be supported */
 @media screen and (max-width:480px){

@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     
     <script type="text/javascript" src="../../JS/common_snippets.js"></script>
+    <script type="text/javascript" src="../../JS/donuts.js"></script>
     <script type="text/javascript" src="../../JS/script-main.js"></script>
     <script src="https://kit.fontawesome.com/77fe297c6d.js" crossorigin="anonymous"></script>
     <script>
@@ -62,49 +63,6 @@
 
     }
 
-    // maybe add ingredients to donut objects
-    var dairyFree={
-        lemonFlavoredPotato:{
-            name:"Lemon Potato",
-            price:6.00,
-            amount:0
-        },
-        italianRedwine:{
-            name:"Italian Redwine",
-            price:6.00,
-            amount:0
-        },
-        mapleBacon:{
-            name:"Maple Bacon",
-            price:6.00,
-            amount:0
-        },
-        blueberryLemonChia:{
-            name:"Blueberry Lemon Chia",
-            price:6.00,
-            amount:0
-        },
-        matcha:{
-            name:"Matcha",
-            price:6.00,
-            amount:0
-        },
-        pinkRaisedToastedCoconut:{
-            name:"Pink Raised Toasted Coconut",
-            price:6.00,
-            amount:0
-        },
-        gingerCaramel:{
-            name:"Ginger & Caramel",
-            price:6.00,
-            amount:0
-        },
-        coconutVanilla:{
-            name:"Coconut Vanilla",
-            price:6.00,
-            amount:0
-        },
-    };
 
     function addToCart(){
         var donuts=[];
@@ -126,18 +84,18 @@
     function updateCart(inputID){
         var amount=parseInt(document.getElementById(inputID).value);
         document.getElementById("cart-donut-amount-"+inputID).innerHTML=amount;
-        dairyFree[inputID].amount=amount;
-        document.getElementById("cart-donut-price-"+inputID).innerHTML="($"+(dairyFree[inputID].price*amount)+")";
+        allDonuts.dairyFree[inputID].amount=amount;
+        document.getElementById("cart-donut-price-"+inputID).innerHTML="($"+(allDonuts.dairyFree[inputID].price*amount)+")";
         
         var total=0;
-        for(var donut in dairyFree){
-            total+=(dairyFree[donut].price*dairyFree[donut].amount);
+        for(var donut in allDonuts.dairyFree){
+            total+=(allDonuts.dairyFree[donut].price*allDonuts.dairyFree[donut].amount);
         }
         document.getElementById("cart-total").innerHTML=total;
     }
 
     function writeHTML(){
-        for(x in dairyFree){
+        for(x in allDonuts.dairyFree){
             document.getElementById("cart-details-container").innerHTML+=
             "<div class=\"cart-details\" id=\"cart-details-"+x+"\">\n" +
             "    <span class=\"cart-donut-name\" id=\"cart-donut-name-"+x+"\">"+dairyFree[x].name+"</span>\n" +
@@ -169,6 +127,8 @@
                 <a href="checkOut.html"><i id="basket" class="fa-solid fa-basket-shopping"></i></a>
             </div>
             <form action="../checkOut.html" method="get">
+                <input type="hidden" name="username" value="exampleuser" id="username-hidden" />
+                <input type="hidden" name="donutType" value="dairyFree" />
                 <div class="pro-container">
                     <div class="pro1">
                         <img id="pic1" class="img" src="lemon.jpg" alt="Lemon-flavered Potato Donut">

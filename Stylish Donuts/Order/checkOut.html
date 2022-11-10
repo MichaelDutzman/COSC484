@@ -9,9 +9,10 @@
         <link rel="stylesheet" href="../ICSS/style-order.css" />
         <link rel="icon" href="../ICSS/Images/Logos/sd_donut_logo_small.png" />
         <script type="text/javascript" src="../JS/common_snippets.js"></script>
+        <script type="text/javascript" src="../JS/donuts.js"></script>
         <script type="text/javascript" src="../JS/script-main.js"></script>
         <script>
-            window.addEventListener('load', () =>{
+            /*window.addEventListener('load', () =>{
                 const params = (new URL(document.location)).searchParams;
                 const name = params.get('name');
                 const order = params.get('order');
@@ -23,9 +24,29 @@
                 document.getElementById('result-order').innerHTML = order;
                 document.getElementById('result-num').innerHTML = num;
                 document.getElementById('result-total').innerHTML = total; 
-            });
+            });*/
 
-            function fillCheckout();
+            function fillCheckout(){
+                const parameters=(new URL(document.location)).searchParams;
+
+                var username=(parameters.get("username") || "exampleuser");
+
+                var total=0;
+                var order="";
+                parameters.forEach((value,name)=>{
+                    // console.log(name+": "+value);
+                    if(name!="username" && name!="donutType"){
+                        order+=name+" ("+value+"), ";
+                    }
+                    total+=(parseInt(value) || 0);
+                });
+                //order=order.slice(0,(order.length-2));
+
+                document.getElementById("result-name").innerHTML=username;
+                document.getElementById("result-order").innerHTML=order;
+                document.getElementById("result-num").innerHTML=total;
+                document.getElementById("result-total").innerHTML=(total*6);
+            }
         </script>
     </head>
     <body onload="loadSite(1);fillCheckout();"><!-- For more information on how to use loadSite(), view
@@ -42,16 +63,16 @@
             <h1 id="welcome">Checkout:</h1>
             <ul>
                 <li>
-                    Username:<span id="result-name"></span>
+                    Username: <span id="result-name"></span>
                 </li>
                 <li>
-                    Order:<span id="result-order"></span>
+                    Order: <span id="result-order"></span>
                 </li>
                 <li>
-                    Quantity:<span id="result-num"></span>
+                    Quantity: <span id="result-num"></span>
                 </li>
                 <li>
-                    Total:<span id="result-total"></span>
+                    Total: $<span id="result-total"></span>
                 </li>
             </ul>
         </section>

@@ -3,12 +3,16 @@
     website. This includes the navigation bar, footer, etc.
 */
 
+const companySlogan="Tasty donuts for every diet";
+
+var dots="";
 function addSnippets(level){
     /* For now, snippets are coded as strings that are included into webpages
         by changing their respective elements' innerHTML. The goal is to have
         snippets in their own html files. Those files would be read and imported
         into the webpages. That should make them easier to work with.
      */
+    dots="../".repeat(level);
     var snippets=[addFooter,addNavBar];
     snippets.forEach((snippet)=>{
         try{
@@ -29,30 +33,29 @@ function addFooter(level){
         "<div class=\"footer-section\" id=\"footer-section-a\">" +
         "    <h2 class=\"footer-section-title\">Order</h2>" +
         "    <ul>" +
-        "        <li><a href=\"#\">Vegan</a></li>" +
-        "        <li><a href=\"#\">Peanut Allergy</a></li>" +
-        "        <li><a href=\"#\">Dairy Free</a></li>" +
-        "        <li><a href=\"#\">Gluten Free</a></li>" +
-        "        <li><a href=\"#\">Keto</a></li>" +
+        "        <li><a href=\""+dots+"Order/Vegan/vegan_main.html\">Vegan</a></li>" +
+        "        <li><a href=\""+dots+"Order/PeanutFree/peanutFree.html\">Peanut Allergy</a></li>" +
+        "        <li><a href=\""+dots+"DairyFree/dairyFree.html\">Dairy Free</a></li>" +
+        "        <li><a href=\""+dots+"GlutenFree/glutenFree.html\">Gluten Free</a></li>" +
+        "        <li><a href=\""+dots+"Keto/keto.html\">Keto</a></li>" +
         "    </ul>" +
         "</div>" +
         "<div class=\"footer-section\" id=\"footer-section-b\">" +
         "    <h2 class=\"footer-section-title\">Connect</h2>" +
         "    <ul>" +
-        "        <li><a href=\"#\">GitHub</a></li>" +
-        "        <li><a href=\"#\">LinkedIn</a></li>" +
-        "        <li><a href=\"#\">Facebook</a></li>" +
-        "        <li><a href=\"#\">Instagram</a></li>" +
+        "        <li><a href=\"github.com\">GitHub</a></li>" +
+        "        <li><a href=\"linkedin.com\">LinkedIn</a></li>" +
+        "        <li><a href=\"facebook.com\">Facebook</a></li>" +
+        "        <li><a href=\"instagram.com\">Instagram</a></li>" +
         "    </ul>" +
         "</div>" +
         "<div class=\"footer-section\" id=\"footer-section-c\">" +
-        "    <h2 class=\"footer-section-title\">Section C</h2>" +
+        "    <h2 class=\"footer-section-title\">Support</h2>" +
         "    <ul>" +
-        "        <li><a href=\"#\">Webpages</a></li>" +
-        "        <li><a href=\"#\">Such</a></li>" +
-        "        <li><a href=\"#\">As a</a></li>" +
-        "        <li><a href=\"#\">Sitemap</a></li>" +
-        "        <li><a href=\"#\">Or Socials</a></li>" +
+        "        <li><a href=\"#\">Donate</a></li>" +
+        "        <li><a href=\"#\">Share</a></li>" +
+        "        <li><a href=\"#\">Join</a></li>" +
+        "        <li><a href=\"#\">Contact</a></li>" +
         "    </ul>" +
         "</div>" +
         "<div id=\"footer-copyright\">" +
@@ -61,7 +64,7 @@ function addFooter(level){
         "</div>";
 
 
-    footer.innerHTML=editLinks(footerHTML,level);
+    footer.innerHTML=footerHTML;
 }
 
 function addNavBar(level){
@@ -72,9 +75,9 @@ function addNavBar(level){
     var navBarHTML=
         "<div id=\"navigation-bar\">" +
         "    <ul id=\"nav-links\">" +
-        "        <li><a href=\"index.html\" class=\"homepage-link\"><img src=\"ICSS/Images/Logos/sd_donut_logo.png\" /></a></li><!--" +
-        "     --><li><a href=\"Order/default.html\">Order<!-- sample text --></a></li><!--" +
-        "     --><li><a href=\"Account/login.html\">Account<!-- sample text --></a></li><!--" +
+        "        <li><a href=\""+dots+"index.html\" class=\"homepage-link\"><img src=\""+dots+"ICSS/Images/Logos/sd_donut_logo.png\" /></a></li><!--" +
+        "     --><li><a href=\""+dots+"Order/default.html\">Order<!-- sample text --></a></li><!--" +
+        "     --><li><a href=\""+dots+"Account/login.html\">Account<!-- sample text --></a></li><!--" +
 //      "     --><li><a href=\"#\">Cart<!-- sample text --></a></li><!--" +
 //      "     --><li><a href=\"#\">About<!-- sample text --></a></li>" +
         "<!----></ul>" +
@@ -90,7 +93,7 @@ function addNavBar(level){
         "    </form>" +
         "</div>";
     //console.log(navBarHTML);
-    navElement.innerHTML=editLinks(navBarHTML,level);
+    navElement.innerHTML=navBarHTML;
 }
 
 function getSnippetFromFile(filename,element,level){

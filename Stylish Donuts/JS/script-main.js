@@ -11,13 +11,21 @@
  * 
  * @param {HTMLElement} obj - the HTML element whose background will be manipulated to achieve
  *                            a parallax scrolling effect
+ * @param {float} rate - The rate at which the background will scroll, relative to the scroll
+ *                       speed. In other words, if the rate is 0.5, the background will scroll at
+ *                       half the speed of the everthing else. If the rate is 1, the background
+ *                       will scroll at the same speed as everything else. If the rate is 0, the
+ *                       background will stay in a fixed position whether or not the user is
+ *                       scrolling.
+ *                       If no rate is specified, it will be set to 0.04
  */
-function parallaxScroll(obj){
+function parallaxScroll(obj,rate){
+    rate=(rate || 0.04);
     var isMobile=(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) || window.innerWidth<=1024);
     if(!isMobile){
         obj.style.backgroundAttachment="fixed";
         document.addEventListener("scroll",function(e){
-            obj.style.backgroundPositionY=(50+(window.scrollY/25))+"%";
+            obj.style.backgroundPositionY=(50+(window.scrollY*rate))+"%";
         });
     }
 }
