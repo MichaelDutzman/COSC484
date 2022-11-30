@@ -22,7 +22,7 @@
         </section>
         <section id="main-section">
             <h2>Create an Account</h2>
-            <form action="../Order/default.html" method="get">
+            <form action="../Order/default.html" method="get" id="signUp">
                 <!-- The information asked in this form can be changed to fit the needs of
                      this website -->
                 <fieldset id="fieldset-name">
@@ -39,7 +39,7 @@
                 </fieldset>
                 <fieldset id="fieldset-address">
                     <div class="input-set">
-                        <input type="text" id="streetaddress" name="streetadress" placeholder="Street Address" required="required" />
+                        <input type="text" id="streetaddress" name="streetaddress" placeholder="Street Address" required="required" />
                         <label for="streetaddress">Street Address</label>
                         <span class="input-error">Please enter your street address</span>
                     </div>
@@ -108,5 +108,9 @@
                 from common_snippets.js
             -->
         </footer>
+
+        <!-- CDN Link for firebase -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js" ></script>
+        <script src="./database.js" ></script>
     </body>
 </html>
