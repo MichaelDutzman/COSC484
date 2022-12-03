@@ -19,6 +19,9 @@
     src:url("Fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
 }
 
+.counter input{
+    color: #e368c4;
+}
 
 :root{
     /* Colors */
