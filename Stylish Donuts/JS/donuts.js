@@ -42,5 +42,47 @@ allDonuts={
             price:6.00,
             amount:0
         },
+    },
+    glutenFree:{
+        lemonVanillaProtein:{
+            name:"Lemon Vanilla Protein",
+            price:6.00,
+            amount:0
+        },
+        cinnamonSugar:{
+            name:"Cinnamon Sugar",
+            price:6.00,
+            amount:0
+        },
+        chocolate:{
+            name:"Chocolate",
+            price:6.00,
+            amount:0
+        },
+        paleoPumpkinSpice:{
+            name:"Paleo Pumpkin Spice",
+            price:6.00,
+            amount:0
+        },
+        bakedAppleCinnamon:{
+            name:"Baked Apple Cinnamon",
+            price:6.00,
+            amount:0
+        },
+        vanilla:{
+            name:"Vanilla",
+            price:6.00,
+            amount:0
+        },
+        lemon:{
+            name:"Lemon",
+            price:6.00,
+            amount:0
+        },
+        mapleChai:{
+            name:"Maple Chai",
+            price:6.00,
+            amount:0
+        },
     }
 };

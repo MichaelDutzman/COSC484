@@ -2,11 +2,11 @@ body{
 	background-color: hsl(326, 90%, 95%);
 	font-family:sans-serif;
 }
-#main-section #prod1 .img{
-	top:0%;
+.img{
+	top:10%;
 	position:relative;
 	border-radius: 5%;
-    width:  200px;
+	width:  200px;
     height: 200px;
     object-fit: cover;
 }
@@ -14,25 +14,53 @@ body{
 	font-family:Sans-Serif;
 	color:#e368c4;
 }
-#main-section #prod1 .pro1 h4{
-	text-align: center;
-    top:0%;
+i{
+	color:#e368c4;
+}
+.counter {
+    width: 150px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.counter input {
+    width: 50px;
+    border: 0;
+    line-height: 8px;
+    font-size: 15px;
+    text-align: center;
+    background: #e368c4;
+    color: #fff;
+    appearance: none;
+    outline: 0;
+}
+.counter span {
+    display: block;
+    font-size: 25px;
+    padding: 0 5px;
+    cursor: pointer;
+    color: #e368c4;
+    user-select: none;
+}
+h4{
+    top:5%;
 	position: relative;
 	font-family:Sans-Serif;
 }
-#main-section #prod1{
+#prod1{
 	text-align: center;
 }
-#main-section #prod1 .pro-container{
+#prod1 .pro-container{
 	display: flex;
 	justify-content: space-around;
 	padding-top: 20px;
 	flex-wrap:wrap;
 }
-#main-section #prod1 .pro1{
+#prod1 .pro1{
 	width:23%;
 	min-width:250px;
-	padding: 18px 12px;
+	padding: 18px 8px;
 	border:1px solid #e368c4;
 	border-radius: 25px;
 	cursor: pointer;
@@ -41,55 +69,23 @@ body{
 	margin:15px 0;
 	transition: 0.2s ease;
 }
-#main-section #prod1 .pro1 .des{
+#prod1 .pro1 .desc{
 	text-align: center;
 	padding: 10px 0;
 	margin: 20;
 	line-height: 5%;
-	position: relative;
 }
-#main-section #prod1 .pro1 .des span{
+#prod1 .pro1 .desc span{
 	color: #606063;
 	font-size:12px;
 	text-align: center;
-	position: relative;
 }
-#main-section #prod1 #prod2 .pro1 .des h5{
+#prod1 #prod2 .pro1 .desc h5{
 	padding-top: 7px;
-    color: #070707;
+	color: #070707;
 	font-size:14px;
 	text-align: center;
-	position: relative;
 }
-#main-section #prod1 .pro1:hover{
+#prod1 .pro1:hover{
 	box-shadow: 20px 20px 30px rgba(0,0,0,0.06);
-    height: 450px;
-
-}
-#main-section #prod1 .ingredients{
-    height: 0px;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 200ms ease-in-out;
-    background: #ccc;
-    margin-top: 20px;
-    overflow: hidden;
-    overflow-y: auto;
-    transform: scale(.8);
-    transform-origin: top left;
-}
-#main-section #prod1 .ingredients ul{
-    list-style-type: circle;
-    list-style-position: inside;
-    text-align: left;
-    padding: 5px;
-}
-#main-section #prod1 .ingredients ul > li{
-    padding: 5px;
-}
-#main-section #prod1 .pro1:hover .ingredients{
-    height: 120px;
-    visibility: visible;
-    opacity: 1;
-    transform: scale(1);
 }
