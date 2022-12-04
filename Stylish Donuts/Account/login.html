@@ -39,9 +39,9 @@
         <section id="homepage-midsection">
             <div id="login-div">
                 <h2>Log in to Stylish Donuts</h2>
-                <form action="../Order/default.html" method="get">
-                    <input type="text" name="username" placeholder="Username" />
-                    <input type="password" name="password" placeholder="Password" />
+                <form action="../Order/default.html" method="get" id="login">
+                    <input type="text" name="email" placeholder="Email" id="email"/>
+                    <input type="password" name="password" placeholder="Password" id="password"/>
                     <input type="submit" value="Log In" />
                     New to Stylish Donuts? <a href="signup.html">Create an Account!</a>
                     <!--<a href="#">Forgot password?
@@ -51,5 +51,8 @@
         </section>
         <!-- <footer>
         </footer> -->
+        <!-- CDN Link for firebase -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js" ></script>
+        <script src="./login.js" ></script>
     </body>
 </html>

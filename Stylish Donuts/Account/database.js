@@ -9,51 +9,52 @@
     appId: "1:1092500348557:web:8e3f265fcafa3e208f4cc4"
   };
 
-  // Initialize database app
+ // Initialize database app
+if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
-
-  // Reference for database
-  var stylishDB = firebase.database().ref("/customer/");
+}
+const auth = firebase.auth();
+const firestore = firebase.firestore();
 
   // Get signUp form
-  document.getElementById("signUp").addEventListener("submit", submitForm);
-
-  function submitForm(e){
-    e.preventDefault();
-
-    var firstName = getElementVal('firstname');
-    var lastName = getElementVal('lastname');
-    var streetAddress = getElementVal('streetaddress');
-    var city = getElementVal('city');
-    var state = getElementVal('state');
-    var zipCode = getElementVal('zipcode');
-    var phoneNo = getElementVal('phonenumber');
-    var email = getElementVal('email');
-    var username = getElementVal('username');
-    var password = getElementVal('password');
-    var passConfirm = getElementVal('password-confirm');
-
-    saveUserInfo(firstName, lastName, streetAddress, city, state, zipCode, phoneNo, email, username, password, passConfirm);
-  }
-
-  const saveUserInfo = function(first, last, street, city, state, zip, phone, email, username, password, passConfirm){
-    var newUser = stylishDB.push();
-
-    newUser.set({
-        userId: username,
-        firstname: first, 
-        lastname: last,
-        streetaddress: street,
-        city: city,
-        state: state,
-        zipcode: zip,
-        phonenumber: phone,
-        email: email,
-        password: password,
-        passwordconfirm: passConfirm
-    });
-  };
-
   const getElementVal = function(id){
     return document.getElementById(id).value;
   };
+  const signForm = document.getElementById("signUp");
+  signForm.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    var email = getElementVal('email');
+    var display = getElementVal('username');
+    var password = getElementVal('password');
+
+    auth.createUserWithEmailAndPassword(email, password)
+    .then(function(cred){
+      cred.user.updateProfile({
+        displayName: username
+      })
+      return firestore.collection('users').doc(cred.user.uid).set({
+        firstName: getElementVal('firstname'),
+        lastName: getElementVal('lastname'),
+        streetAddress: getElementVal('streetaddress'),
+        city: getElementVal('city'),
+        state: getElementVal('state'),
+        zipCode: getElementVal('zipcode'),
+        phoneNo: getElementVal('phonenumber'),
+        email: email,
+        displayName: display,
+        password: password,
+        passConfirm: getElementVal('password-confirm')
+      });
+    })
+    .then(function(){
+      location.href = "../Order/default.html";
+      console.log("user created");
+    })
+    .catch(function(err) {
+      console.log(err.message);
+    });
+  })
+ 
+
+ 
