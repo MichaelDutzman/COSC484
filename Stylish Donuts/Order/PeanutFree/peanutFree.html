@@ -5,16 +5,22 @@
     <!--peanutFree.css-->
     <link rel="stylesheet" type="text/css" href="peanutFree.css">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="ICSS/style-basic.css" />
-    <link rel="stylesheet" href="ICSS/style-global.css" />
-    <link rel="stylesheet" href="ICSS/style-homepage.css" />
+        <link rel="stylesheet" href="../../ICSS/style-basic.css" />
+        <link rel="stylesheet" href="../../ICSS/style-global.css" />
+        <link rel="stylesheet" href="../../ICSS/style-subsite.css" />
 
-    <meta charset="UTF-8">
-    <script src="https://kit.fontawesome.com/77fe297c6d.js" crossorigin="anonymous"></script>
+        <link rel="icon" href="../../ICSS/Images/Logos/sd_donut_logo_small.png" />
+        <meta charset="UTF-8">
+    
+        <script type="text/javascript" src="../../JS/common_snippets.js"></script>
+        <script type="text/javascript" src="../../JS/donuts.js"></script>
+        <script type="text/javascript" src="../../JS/script-main.js"></script>
+        <script src="https://kit.fontawesome.com/77fe297c6d.js" crossorigin="anonymous"></script>
     <script>
         function thirdFunction(argument){
             alert("Ingredients:" + argument);
         }
+        
         function increaseCount(a, b) {
         var input = b.previousElementSibling;
         var value = parseInt(input.value, 10); 
@@ -25,7 +31,8 @@
                 input.value = value; 
             }  
         }
-      function decreaseCount(a, b) {
+     
+        function decreaseCount(a, b) {
         var input = b.nextElementSibling;
         var value = parseInt(input.value, 10); 
         if (value > 0) {
@@ -46,30 +53,87 @@
         var donut8= 6*(range8.value);
         var total = [donut1+donut2+donut3+donut4+donut5+donut6];
         var order = arg[a,b,c,d,e,f,g,h];
-        a = "Lemon Potato ("+(donut1/6);
-        b= "Italian Redwine ("+(donut2/6);
-        c= "Maple Bacon ("+(donut3/6); 
-        d= "Blueberry Lemon Chia "+(donut4/6);
-        e= "Matcha ("+(donut5/6);
-        f= "Pink Raised Toasted Coconut ("+(donut6/6);
-        g= "Ginger & Caramel ("+(donut7/6);
-        h="Coconut Vanilla ("+(donut8/6);
+        a = "Berliner Donuts ("+(donut1/6);
+        b= "Cinnamon Sugar Grilled Donuts ("+(donut2/6);
+        c= "Buttermilk Old Fashioned Donuts ("+(donut3/6); 
+        d= "Panda Donuts "+(donut4/6);
+        e= "Snowball Donuts ("+(donut5/6);
+        f= "Biscoff Donuts ("+(donut6/6);
+        g= "S'mores Donuts ("+(donut7/6);
+        h="Challah Donuts ("+(donut8/6);
 
         document.write(order+'): $'+total);
 
     }
     
+    function addToCart(){
+            var donuts=[];
+            var prices=[]; // this is an array just in case the prices change from all being $6
+            for(var i=1;true;i++){ // get amounts from inputs
+                try{ // try to keep finding inputs with the name range1, range2, etc. ...
+                    donuts[(i-1)]=parseInt(document.getElementById("range"+i).value);
+                }
+                catch(e){ // ... and if you reach one that doesn't exist, then stop searching
+                    break;
+                }
+            }
+    
+            for(var i=0;i<donuts.length;i++){
+                prices[i]=6; // all prices are set to $6. A different statement would need to be written if prices change from all being $6
+            }
+        }
 
+        function updateCart(inputID){
+                var amount=parseInt(document.getElementById(inputID).value);
+                document.getElementById("cart-donut-amount-"+inputID).innerHTML=amount;
+                allDonuts.dairyFree[inputID].amount=amount;
+                document.getElementById("cart-donut-price-"+inputID).innerHTML="($"+(allDonuts.dairyFree[inputID].price*amount)+")";
+            
+            var total=0;
+            for(var donut in allDonuts.dairyFree){
+                total+=(allDonuts.dairyFree[donut].price*allDonuts.dairyFree[donut].amount);
+            }
+            document.getElementById("cart-total").innerHTML=total;
+        }
+    
+        function writeHTML(){
+            for(x in allDonuts.dairyFree){
+                document.getElementById("cart-details-container").innerHTML+=
+                "<div class=\"cart-details\" id=\"cart-details-"+x+"\">\n" +
+                "    <span class=\"cart-donut-name\" id=\"cart-donut-name-"+x+"\">"+dairyFree[x].name+"</span>\n" +
+                "    <span class=\"cart-donut-amount\" id=\"cart-donut-amount-"+x+"\">0</span>\n" +
+                "</div>\n";
+            }
+        }
     </script>
+    <style>
+            .cart-donut-name{
+                font-weight:700;
+            }
+        </style>
 </head>
-<body>
-    <section id="prod1" class="section-p1">
+<body onload="loadSite(2);">
+     <section id="subsite-title">
+            <div id="navigation-container">
+                <!--
+                    Nothing needs to go here, the contents will be autogenerated
+                    from common_snippets.js
+                -->
+            </div>
+     </section>
+
+<section id="main-section">
+<section id="prod1" class="section-p1">
         <h2>Peanut-Free Donuts</h2>
         <p>Some donuts may still contain dairy, gluten, and animal byproduct</p>
         <div class="basket">
             <a href="checkOut.html"><i id="basket" class="fa-solid fa-basket-shopping"></i></a>
         </div>
+
+    <form action="../checkOut.html" method="get">
         <!--https://www.yummly.com/recipe/Berliner-Donuts-9496293-->
+          <input type="hidden" name="username" value="exampleuser" id="username-hidden" />
+          <input type="hidden" name="donutType" value="peanutFree" />
         <div class="pro-container">
             <div class="pro1">
                 <img id="pic1" class="img" src="Berliner_Donuts.jpg" alt="Donut Muffins">
@@ -77,13 +141,12 @@
                     <div class="desc">
                         <p>$6</p>
                         <div class="counter">
-                            <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                            <input  id="range1" type="text" value="0">
-                            <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                            <span class="down" onClick='decreaseCount(event, this); updateCart("berlinerDonuts");'>-</span>
+                            <input  id="berlinerDonuts" name="berlinerDonuts" type="text" value="0" onchange='updateCart("berlinerDonuts");'>
+                            <span class="up"  onClick='increaseCount(event, this); updateCart("berlinerDonuts");'>+</span>
                           </div>
-            </div>
-            
-        </div>
+                     </div>
+                </div>
         <!--https://www.yummly.com/recipe/Cinnamon-Sugar-Grilled-Donuts-2108749-->
             <div class="pro1">   
                 <img id="pic2" class="img" src="Cinnamon_Sugar_Grilled_Donuts.jpg">
@@ -91,9 +154,9 @@
                     <div class="desc">
                     <p>$6</p>
                     <div class="counter">
-                        <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                        <input id="range2" type="text" value="0">
-                        <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                        <span class="down" onClick='decreaseCount(event, this); updateCart("cinnamonSugar");'>-</span>
+                        <input id="cinnamonSugar" name="cinnamonSugar" type="text" value="0" onchange='updateCart("cinnamonSugar");'>
+                        <span class="up"  onClick='increaseCount(event, this); updateCart("cinnamonSugar");'>+</span>
                       </div>
                     <!-- <button onclick="checkOut(' Italian Red Wine ')" id="wine" class="button" type="submit">Add to Cart</button> -->
                 </div>
@@ -105,9 +168,9 @@
                     <div class="desc">
                     <p>$6</p>
                     <div class="counter">
-                        <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                        <input id="range3" type="text" value="0">
-                        <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                        <span class="down" onClick='decreaseCount(event, this); updateCart("buttermilkOld");'>-</span>
+                        <input id="buttermilkOld" name="buttermilkOld" type="text" value="0" onchange='updateCart("buttermilkOld");'>
+                        <span class="up"  onClick='increaseCount(event, this); updateCart("buttermilkOld");'>+</span>
                       </div>
                     <!-- <button onclick="checkOut(' Maple Bacon ')" id="maple" class="button" type="submit">Add to Cart</button> -->
             </div>
@@ -120,9 +183,9 @@
             <div class="desc">
                 <p>$6</p>
                 <div class="counter">
-                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                    <input id="range4" type="text" value="0">
-                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                    <span class="down" onClick='decreaseCount(event, this); updateCart("pandaDonuts");'>-</span>
+                    <input id="pandaDonuts" name="pandaDonuts" type="text" value="0" onchange='updateCart("pandaDonuts");'>
+                    <span class="up"  onClick='increaseCount(event, this); updateCart("pandaDonuts");'>+</span>
                   </div>
                 <!-- <button onclick="checkOut(' Blueberry Lemon Chia ')" id="chia" class="button" type="submit">Add to Cart</button> -->
             </div>
@@ -135,9 +198,9 @@
             <div class="desc">
                 <p>$6</p>
                 <div class="counter">
-                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                    <input id="range5"  type="text" value="0">
-                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                    <span class="down" onClick='decreaseCount(event, this); updateCart("snowballDonuts");'>-</span>
+                    <input id="snowballDonuts" name="snowballDonuts" type="text" value="0" onchange='updateCart("snowballDonuts");'>
+                    <span class="up"  onClick='increaseCount(event, this); updateCart("snowballDonuts");'>+</span>
                   </div>
                 <!-- <button onclick="checkOut(' Matcha ')" id="matcha" class="button" type="submit">Add to Cart</button> -->
             </div>
@@ -150,9 +213,9 @@
             <div class="desc">
                 <p>$6</p>
                 <div class="counter">
-                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                    <input onclick="checkOut(' Pink Raised Toasted Coconut ')" id="range6" type="text" value="0">
-                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                    <span class="down" onClick='decreaseCount(event, this); updateCart("biscoffDonuts");'>-</span>
+                    <input id="biscoffDonuts" name="biscoffDonuts" type="text" value="0" onchange='updateCart("biscoffDonuts");'>
+                    <span class="up"  onClick='increaseCount(event, this); updateCart("biscoffDonuts");'>+</span>
                   </div>
                 <!-- <button onclick="checkOut(' Pink Raised Toasted Coconut ')" id="pink" class="button" type="submit">Add to Cart</button> -->
             </div>
@@ -165,9 +228,9 @@
             <div class="desc">
                 <p>$6</p>
                 <div class="counter">
-                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                    <input id="range7" type="text" value="0">
-                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                    <span class="down" onClick='decreaseCount(event, this); updateCart("smoresDonuts");'>-</span>
+                    <input id="smoresDonuts" name="smoresDonuts" type="text" value="0" onchange='updateCart("smoresDonuts");'>
+                    <span class="up"  onClick='increaseCount(event, this); updateCart("smoresDonuts");'>+</span>
                   </div>
                 <!-- <button onclick="checkOut(' Ginger & Caramel ')" id="ginger" class="button" type="submit">Add to Cart</button> -->
             </div>
@@ -181,14 +244,69 @@
             <div class="desc">
                 <p>$6</p>
                 <div class="counter">
-                    <span class="down" onClick='decreaseCount(event, this)'>-</span>
-                    <input id="range8" type="text" value="0">
-                    <span class="up"  onClick='increaseCount(event, this)'>+</span>
+                    <span class="down" onClick='decreaseCount(event, this); updateCart("challahDonuts");'>-</span>
+                    <input id="challahDonuts" name="challahDonuts" type="text" value="0" onchange='updateCart("challahDonuts");'>
+                    <span class="up"  onClick='increaseCount(event, this); updateCart("challahDonuts");'>+</span>
                   </div>
                 <!-- <button onclick="checkOut(' Coconut Vanilla ')" id="vanilla" class="button" type="submit">Add to Cart</button> -->
         </div>
     </div>
-   </div> <button onclick="checkOut('Name: ')" class="button" type="submit">Add to Cart</button>
-    </section>
+   </div> 
+   <button onclick="checkOut('Name: ')" class="button" type="submit">Add to Cart</button>
+  </form>
+</section>
+<div id="cart-details-container">
+    <div class="cart-details" id="cart-details-lemonFlavoredPotato">
+        <span class="cart-donut-name" id="cart-donut-name-lemonFlavoredPotato">Berliner Donuts:</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-lemonFlavoredPotato">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-lemonFlavoredPotato">($0)</span>
+    </div>
+    <div class="cart-details" id="cart-details-italianRedwine">
+        <span class="cart-donut-name" id="cart-donut-name-italianRedwine">Cinnamon Sugar Grilled Donuts :</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-italianRedwine">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-italianRedwine">($0)</span>
+    </div>
+    <div class="cart-details" id="cart-details-mapleBacon">
+        <span class="cart-donut-name" id="cart-donut-name-mapleBacon">Buttermilk Old Fashioned Donuts :</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-mapleBacon">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-mapleBacon">($0)</span>
+    </div>
+    <div class="cart-details" id="cart-details-blueberryLemonChia">
+        <span class="cart-donut-name" id="cart-donut-name-blueberryLemonChia">Panda Donuts :</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-blueberryLemonChia">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-blueberryLemonChia">($0)</span>
+    </div>
+    <div class="cart-details" id="cart-details-matcha">
+        <span class="cart-donut-name" id="cart-donut-name-matcha">Snowball Donuts :</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-matcha">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-matcha">($0)</span>
+    </div>
+    <div class="cart-details" id="cart-details-pinkRaisedToastedCoconut">
+        <span class="cart-donut-name" id="cart-donut-name-pinkRaisedToastedCoconut">Biscoff Donuts :</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-pinkRaisedToastedCoconut">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-pinkRaisedToastedCoconut">($0)</span>
+    </div>
+    <div class="cart-details" id="cart-details-gingerCaramel">
+        <span class="cart-donut-name" id="cart-donut-name-gingerCaramel">S'mores Donuts :</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-gingerCaramel">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-gingerCaramel">($0)</span>
+    </div>
+    <div class="cart-details" id="cart-details-coconutVanilla">
+        <span class="cart-donut-name" id="cart-donut-name-coconutVanilla">Challah Donuts :</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-coconutVanilla">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-coconutVanilla">($0)</span>
+    </div>
+    <br />
+    <div>
+        Total: $<span id="cart-total">0</span>
+    </div>
+</div>
+</section>
+    <footer>
+    <!--
+        Nothing needs to go here, the contents will be autogenerated
+        from common_snippets.js
+    -->
+    </footer>
 </body>
 </html>
