@@ -3,19 +3,23 @@
 }
 #order-donuts{
     margin-top:2em;
+    display:grid;
 }
 #order-donuts fieldset{
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    /*display:grid;
+    grid-template-columns: 1fr 1fr 1fr;*/
     column-gap:16px;
     row-gap:16px;
     margin-bottom:1em;
+    display:flex;
+    flex-wrap:wrap;
 }
 .donut-for-order{
     border: 1px solid #e368c4;
     padding:20px;
     border-radius:23px;
     transition:0.2s ease;
+    width:250px;
 }
 .donut-for-order:hover{
     box-shadow:20px 20px 30px rgba(0,0,0,0.06);
@@ -23,15 +27,78 @@
 .donut-for-order>div{
     margin-top: 16px;
 }
-.donut-image-container img{
+.donut-image-container .donut-image{
     width:100%;
+    height:100%;
+    background-position:center;
+    background-size:cover;
+    transition:var(--standard-transition);
+    transform-origin:50% 50%;
+}
+.donut-for-order:hover .donut-image{
+    transform:scale(102%);
+}
+
+.donut-image-container{
+    height:200px;
+    overflow:hidden;
+    border-radius:4px;
 }
 
 .donut-ingredients-list li{
     list-style-type:"-  ";
 }
 
-#order-donuts input[type=submit]{
+#submit-order{
     width:100%;
     font-size:32px;
+    grid-area:submit;
+}
+
+#order-cart-items{
+    position:sticky; /* TODO: make this work */
+    top:10px;
+}
+
+.cart-details{
+    border-radius:12px;
+    border:1px solid var(--main-color);
+    margin-bottom:12px;
+    padding: 12px;
+    text-align:left;
+}
+.cart-donut-name{
+    font-weight:700;
+}
+.cart-donut-amount::before{
+    content:'× ';
+}
+
+.pro1 .img{
+    opacity:0.95;
+    transition:var(--standard-transition);
+}
+.pro1:hover .img{
+    opacity:1;
+}
+
+/* Phone */
+/* 320px is the minimum width that needs to be supported */
+@media screen and (max-width:480px){
+
+}
+
+/* Tablet */
+@media screen and (min-width:480px) and (max-width:1024px){
+
+}
+
+/* Desktop */
+@media screen and (min-width:1024px){
+    #order-donuts{
+        grid-template-columns:3fr 1fr;
+        grid-template-areas:
+            "fieldset order-cart"
+            "submit   submit";
+    }
 }

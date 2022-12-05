@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="../../ICSS/style-basic.css" />
         <link rel="stylesheet" href="../../ICSS/style-global.css" />
         <link rel="stylesheet" href="../../ICSS/style-subsite.css" />
+        <link rel="stylesheet" href="../../ICSS/style-order.css" />
 
         <link rel="icon" href="../../ICSS/Images/Logos/sd_donut_logo_small.png" />
         <meta charset="UTF-8">
@@ -15,9 +16,10 @@
         <script type="text/javascript" src="../../JS/common_snippets.js"></script>
         <script type="text/javascript" src="../../JS/donuts.js"></script>
         <script type="text/javascript" src="../../JS/script-main.js"></script>
+        <script type="text/javascript" src="../../JS/script-order.js"></script>
         <script src="https://kit.fontawesome.com/77fe297c6d.js" crossorigin="anonymous"></script>
     <script>
-        function thirdFunction(argument){
+        /*function thirdFunction(argument){
             alert("Ingredients:" + argument);
         }
         
@@ -104,7 +106,8 @@
                 "    <span class=\"cart-donut-amount\" id=\"cart-donut-amount-"+x+"\">0</span>\n" +
                 "</div>\n";
             }
-        }
+        }*/
+            const diet="peanutAllergy"; // This should be left here. It will be used in the cart functions (in script-order.js)
     </script>
     <style>
             .cart-donut-name{
@@ -256,46 +259,38 @@
   </form>
 </section>
 <div id="cart-details-container">
-    <div class="cart-details" id="cart-details-lemonFlavoredPotato">
-        <span class="cart-donut-name" id="cart-donut-name-lemonFlavoredPotato">Berliner Donuts:</span>
-        <span class="cart-donut-amount" id="cart-donut-amount-lemonFlavoredPotato">0</span>
-        <span class="cart-donut-price" id="cart-donut-price-lemonFlavoredPotato">($0)</span>
-    </div>
-    <div class="cart-details" id="cart-details-italianRedwine">
-        <span class="cart-donut-name" id="cart-donut-name-italianRedwine">Cinnamon Sugar Grilled Donuts :</span>
-        <span class="cart-donut-amount" id="cart-donut-amount-italianRedwine">0</span>
-        <span class="cart-donut-price" id="cart-donut-price-italianRedwine">($0)</span>
-    </div>
-    <div class="cart-details" id="cart-details-mapleBacon">
-        <span class="cart-donut-name" id="cart-donut-name-mapleBacon">Buttermilk Old Fashioned Donuts :</span>
-        <span class="cart-donut-amount" id="cart-donut-amount-mapleBacon">0</span>
-        <span class="cart-donut-price" id="cart-donut-price-mapleBacon">($0)</span>
-    </div>
-    <div class="cart-details" id="cart-details-blueberryLemonChia">
-        <span class="cart-donut-name" id="cart-donut-name-blueberryLemonChia">Panda Donuts :</span>
-        <span class="cart-donut-amount" id="cart-donut-amount-blueberryLemonChia">0</span>
-        <span class="cart-donut-price" id="cart-donut-price-blueberryLemonChia">($0)</span>
-    </div>
-    <div class="cart-details" id="cart-details-matcha">
-        <span class="cart-donut-name" id="cart-donut-name-matcha">Snowball Donuts :</span>
-        <span class="cart-donut-amount" id="cart-donut-amount-matcha">0</span>
-        <span class="cart-donut-price" id="cart-donut-price-matcha">($0)</span>
-    </div>
-    <div class="cart-details" id="cart-details-pinkRaisedToastedCoconut">
-        <span class="cart-donut-name" id="cart-donut-name-pinkRaisedToastedCoconut">Biscoff Donuts :</span>
-        <span class="cart-donut-amount" id="cart-donut-amount-pinkRaisedToastedCoconut">0</span>
-        <span class="cart-donut-price" id="cart-donut-price-pinkRaisedToastedCoconut">($0)</span>
-    </div>
-    <div class="cart-details" id="cart-details-gingerCaramel">
-        <span class="cart-donut-name" id="cart-donut-name-gingerCaramel">S'mores Donuts :</span>
-        <span class="cart-donut-amount" id="cart-donut-amount-gingerCaramel">0</span>
-        <span class="cart-donut-price" id="cart-donut-price-gingerCaramel">($0)</span>
-    </div>
-    <div class="cart-details" id="cart-details-coconutVanilla">
-        <span class="cart-donut-name" id="cart-donut-name-coconutVanilla">Challah Donuts :</span>
-        <span class="cart-donut-amount" id="cart-donut-amount-coconutVanilla">0</span>
-        <span class="cart-donut-price" id="cart-donut-price-coconutVanilla">($0)</span>
-    </div>
+    <div class="cart-details" id="cart-details-berlinerDonuts">
+        <span class="cart-donut-name" id="cart-donut-name-berlinerDonuts">Berliner Donuts</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-berlinerDonuts">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-berlinerDonuts">($0)</span></div>
+    <div class="cart-details" id="cart-details-cinnamonSugar">
+        <span class="cart-donut-name" id="cart-donut-name-cinnamonSugar">Cinnamon Sugar Grilled Donuts</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-cinnamonSugar">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-cinnamonSugar">($0)</span></div>
+    <div class="cart-details" id="cart-details-buttermilkOld">
+        <span class="cart-donut-name" id="cart-donut-name-buttermilkOld">Buttermilk Old Fashioned Donuts</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-buttermilkOld">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-buttermilkOld">($0)</span></div>
+    <div class="cart-details" id="cart-details-pandaDonuts">
+        <span class="cart-donut-name" id="cart-donut-name-pandaDonuts">Panda Donuts</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-pandaDonuts">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-pandaDonuts">($0)</span></div>
+    <div class="cart-details" id="cart-details-snowballDonuts">
+        <span class="cart-donut-name" id="cart-donut-name-snowballDonuts">Snowball Donuts</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-snowballDonuts">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-snowballDonuts">($0)</span></div>
+    <div class="cart-details" id="cart-details-biscoffDonuts">
+        <span class="cart-donut-name" id="cart-donut-name-biscoffDonuts">Biscoff Donuts</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-biscoffDonuts">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-biscoffDonuts">($0)</span></div>
+    <div class="cart-details" id="cart-details-smoresDonuts">
+        <span class="cart-donut-name" id="cart-donut-name-smoresDonuts">S'mores Donuts</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-smoresDonuts">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-smoresDonuts">($0)</span></div>
+    <div class="cart-details" id="cart-details-challahDonuts">
+        <span class="cart-donut-name" id="cart-donut-name-challahDonuts">Challah Donuts</span>
+        <span class="cart-donut-amount" id="cart-donut-amount-challahDonuts">0</span>
+        <span class="cart-donut-price" id="cart-donut-price-challahDonuts">($0)</span></div>
     <br />
     <div>
         Total: $<span id="cart-total">0</span>

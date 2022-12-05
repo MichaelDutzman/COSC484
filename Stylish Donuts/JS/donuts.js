@@ -7,37 +7,37 @@ allDonuts={
             price:6.00,
             amount:0
         },
-        jellyVeganDonut:{
+        jellyDonut:{
             name:"Jelly Vegan Donut",
             price:6.00,
             amount:0
         },
-        veganBostonCream:{
+        bostonCream:{
             name:"Vegan Boston Cream",
             price:6.00,
             amount:0
         },
-        veganBriocheWithVanillaGlaze:{
+        veganBrioche:{
             name:"Vegan Brioche with Vanilla Glaze",
             price:6.00,
             amount:0
         },
-        softBakedLemonWithLemonGlaze:{
+        bakedLemon:{
             name:"Soft-Baked Lemon with Lemon Glaze",
             price:6.00,
             amount:0
         },
-        peanutButterBananaDonuts:{
+        peanutBanana:{
             name:"Peanut Butter Banana Donuts",
             price:6.00,
             amount:0
         },
-        coconutOrangePistachioDonuts:{
+        coconutOrange:{
             name:"Coconut Orange Pistachio Donuts",
             price:6.00,
             amount:0
         },
-        toastedCoconutBakedDonutwithMangoGlaze:{
+        toastedCoconut:{
             name:"Toasted Coconut Baked Donut with Mango Glaze",
             price:6.00,
             amount:0
@@ -49,12 +49,12 @@ allDonuts={
             price:6.00,
             amount:0
         },
-        cinnamonSugarGrilledDonuts:{
+        cinnamonSugar:{
             name:"Cinnamon Sugar Grilled Donuts",
             price:6.00,
             amount:0
         },
-        buttermilkOldFashionedDonuts:{
+        buttermilkOld:{
             name:"Buttermilk Old Fashioned Donuts",
             price:6.00,
             amount:0

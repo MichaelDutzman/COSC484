@@ -52,6 +52,7 @@ function addToCart(){
 
 function updateCart(inputID){
     var amount=parseInt(document.getElementById(inputID).value);
+    console.log("cart-donut-amount-"+inputID);
     document.getElementById("cart-donut-amount-"+inputID).innerHTML=amount;
     allDonuts[diet][inputID].amount=amount;
     document.getElementById("cart-donut-price-"+inputID).innerHTML="($"+(allDonuts[diet][inputID].price*amount)+")";
