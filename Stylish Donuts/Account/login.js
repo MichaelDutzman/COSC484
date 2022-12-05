@@ -27,7 +27,7 @@ loginForm.addEventListener('submit', function(e){
 
   auth.signInWithEmailAndPassword(email, password)
   .then(function(cred){
-    alert("Hello: " + cred.user.displayName);
+    //alert("Hello: " + cred.user.displayName);
     location.href = "../Order/default.html";
   })
 })

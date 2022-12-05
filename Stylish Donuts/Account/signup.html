@@ -10,6 +10,28 @@
         <script type="text/javascript" src="../JS/common_snippets.js"></script>
         <script type="text/javascript" src="../JS/script-main.js"></script>
     </head>
+    <script>
+
+        function checkPassword() {
+        const password = document.querySelector('input[name=password]');
+        const confirm = document.querySelector('input[name=password-confirm]');
+        if (confirm.value === password.value) {
+          confirm.setCustomValidity('');
+        } else {
+          confirm.setCustomValidity('Passwords do not match');
+        }
+      }
+      function checkDiet(){
+        const checkboxes = Array.from(document.querySelectorAll("input[name=diets]"));
+        const check = document.querySelector("input[name=diets]");
+        if (checkboxes.reduce((acc, curr) => acc || curr.checked, false) === true){
+            check.setCustomValidity('');
+        } else {
+            return('Pick a diet');
+            alert('Please pick a diet');
+        }
+      }
+    </script>
     <body onload="loadSite(1);"><!-- For more information on how to use loadSite(), view
         the documentation in JS/script-main.js -->
         <section id="subsite-title">
@@ -60,9 +82,9 @@
                     </div>
                 </fieldset>
                 <div class="input-set">
-                    <input type="tel" id="phonenumber" name="phonenumber" placeholder="Phone Number" required="required" />
+                    <input type="tel" id="phonenumber" name="phonenumber" placeholder="Phone Number" required="required" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxlength="12"/>
                     <label for="phonenumber">Phone Number</label>
-                    <span class="input-error">Please enter a valid phone number</span>
+                    <span class="input-error">Please enter a valid phone number Eg: 081 222 2224</span>
                 </div>
                 <div class="input-set">
                     <input type="email" id="email" name="email" placeholder="Email Address" required="required" />
@@ -75,12 +97,12 @@
                     <span class="input-error">Please enter a username</span>
                 </div>
                 <div class="input-set">
-                    <input type="password" id="password" name="password" placeholder="Password" required="required" />
+                    <input type="password" id="password" name="password" placeholder="Password" required="required" onChange="checkPassword()"/>
                     <label for="Password">Password</label>
                     <span class="input-error">Please enter a password</span>
                 </div>
                 <div class="input-set">
-                    <input type="password" id="password-confirm" name="password-confirm" placeholder="Password (Confirm)" required="required" />
+                    <input type="password" id="password-confirm" name="password-confirm" placeholder="Password (Confirm)" required="required" onChange="checkPassword()"/>
                     <label for="password-confirm">Password (Confirm)</label>
                     <span class="input-error">Please confirm your password</span>
                 </div>
