@@ -35,18 +35,18 @@ function addFooter(level){
         "    <ul>" +
         "        <li><a href=\""+dots+"Order/Vegan/vegan_main.html\">Vegan</a></li>" +
         "        <li><a href=\""+dots+"Order/PeanutFree/peanutFree.html\">Peanut Allergy</a></li>" +
-        "        <li><a href=\""+dots+"DairyFree/dairyFree.html\">Dairy Free</a></li>" +
-        "        <li><a href=\""+dots+"GlutenFree/glutenFree.html\">Gluten Free</a></li>" +
-        "        <li><a href=\""+dots+"Keto/keto.html\">Keto</a></li>" +
+        "        <li><a href=\""+dots+"Order/DairyFree/dairyFree.html\">Dairy Free</a></li>" +
+        "        <li><a href=\""+dots+"Order/GlutenFree/glutenFree.html\">Gluten Free</a></li>" +
+        "        <li><a href=\""+dots+"Order/Keto/keto.html\">Keto</a></li>" +
         "    </ul>" +
         "</div>" +
         "<div class=\"footer-section\" id=\"footer-section-b\">" +
         "    <h2 class=\"footer-section-title\">Connect</h2>" +
         "    <ul>" +
-        "        <li><a href=\"github.com\">GitHub</a></li>" +
-        "        <li><a href=\"linkedin.com\">LinkedIn</a></li>" +
-        "        <li><a href=\"facebook.com\">Facebook</a></li>" +
-        "        <li><a href=\"instagram.com\">Instagram</a></li>" +
+        "        <li><a href=\"https://www.github.com/MichaelDutzman/COSC484/\">GitHub</a></li>" +
+        "        <li><a href=\"http://www.linkedin.com\">LinkedIn</a></li>" +
+        "        <li><a href=\"http://www.facebook.com\">Facebook</a></li>" +
+        "        <li><a href=\"http://www.instagram.com\">Instagram</a></li>" +
         "    </ul>" +
         "</div>" +
         "<div class=\"footer-section\" id=\"footer-section-c\">" +
@@ -96,6 +96,14 @@ function addNavBar(level){
     navElement.innerHTML=navBarHTML;
 }
 
+/**
+ * Reads the contents of a file and writes it into an HTMLElement. The contents of the file should
+ * be the HTML that should be written into the page.
+ * @param {string} filename a string with the location of the file containing the snippet
+ * @param {HTMLElement} element the HTMLElement to which the snippet will be written
+ * @param {int} level 
+ * @depricated Use addSnippets() instead
+ */
 function getSnippetFromFile(filename,element,level){
     var xhttp=new XMLHttpRequest();
     xhttp.onload=function(){

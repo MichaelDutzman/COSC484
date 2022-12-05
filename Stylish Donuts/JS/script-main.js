@@ -32,7 +32,8 @@ function parallaxScroll(obj,rate){
 
 /**
  * Adds content and sets links and footer. This function should be called when the website is loaded.
- * @param {int} level the level of the current page. 0 is for the homepage, 1 is for a subsite, 2 for a subsubsite, etc.
+ * @param {int} level the level of the current page. 0 is for the homepage, 1 is for a subsite, 2 for
+ *                    a subsubsite, etc.
  */
 function loadSite(level){
     addSnippets(level);
@@ -88,4 +89,24 @@ function quantityChooser(targetID,increment){
             Math.max((currentValue+increment),min),
         max);
     return false;
+}
+
+
+function listify(array = []){
+    if(array.length==0){
+        return "";
+    }
+    if(array.length==1){
+        return array[0];
+    }
+    if(array.length==2){
+        return array[0]+" and "+array[1];
+    }
+
+    var list=array[0];
+    for(var i=1;i<(array.length-1);i++){
+        list+=", "+array[i];
+    }
+    list+=", and "+array[(array.length-1)];
+    return list;
 }
