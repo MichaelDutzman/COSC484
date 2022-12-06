@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="../ICSS/style-global.css" />
         <link rel="stylesheet" href="../ICSS/style-subsite.css" />
         <link rel="stylesheet" href="../ICSS/style-order.css" />
+        <link rel="stylesheet" href="../ICSS/style-signup.css" />
+        <link rel="stylesheet" href="../ICSS/style-checkout.css" />
         <link rel="icon" href="../ICSS/Images/Logos/sd_donut_logo_small.png" />
         <script type="text/javascript" src="../JS/common_snippets.js"></script>
         <script type="text/javascript" src="../JS/donuts.js"></script>
@@ -29,25 +31,59 @@
             function fillCheckout(){
                 const parameters=(new URL(document.location)).searchParams;
 
-                var username=(parameters.get("username") || "exampleuser");
+                //var username=(parameters.get("username") || "exampleuser");
 
-                var total=0;
-                var order="";
-                parameters.forEach((value,name)=>{
+                const TAX_RATE=0.06;
+                const DELIVERY_RATE=0.24;
+
+                var subtotal=0;
+                // var order="";
+
+                parameters.forEach((amount,donut)=>{
                     // console.log(name+": "+value);
-                    if(name!="username" && name!="donutType"){
-                        order+=name+" ("+value+"), ";
+                    if(donut!="username" && donut!="donutType"){
+                        if(amount!=0){
+                            console.log(donut);
+                            let currentDonut=getDonutByShortName(donut);
+                            let donutName=currentDonut.name;
+                            let donutPrice=currentDonut.price;
+                            amount=(parseInt(amount) || 0);
+                            let itemTotal=(donutPrice*amount);
+                            subtotal+=itemTotal;
+                            //order+=getDonutByShortName(donut).name+" ("+amount+"), ";
+                            document.getElementById("checkout-cart-items").innerHTML+=
+                            "<div class='checkout-cart-detail'>" +
+                            "    <span class='checkout-cart-minor-label'>"+donutName+" × "+amount+" </span><span class='checkout-cart-minor-value'>"+moneyFormat(itemTotal)+"</span>" +
+                            "</div>";
+                        }
                     }
-                    total+=(parseInt(value) || 0);
                 });
-                //order=order.slice(0,(order.length-2));
 
-                document.getElementById("result-name").innerHTML=username;
-                document.getElementById("result-order").innerHTML=order;
-                document.getElementById("result-num").innerHTML=total;
-                document.getElementById("result-total").innerHTML=(total*6);
+                document.getElementById("subtotal").innerHTML=moneyFormat(subtotal);
+
+                // order=order.slice(0,(order.length-2));
+
+                let tax=(subtotal*TAX_RATE);
+                let deliveryFee=(subtotal*DELIVERY_RATE);
+                
+                document.getElementById("tax").innerHTML=moneyFormat(tax);
+                document.getElementById("delivery-fee").innerHTML=moneyFormat(deliveryFee);
+
+                //document.getElementById("result-name").innerHTML=username;
+                // document.getElementById("result-order").innerHTML=order;
+                // document.getElementById("result-num").innerHTML=total;
+                document.getElementById("total").innerHTML=moneyFormat(subtotal+tax+deliveryFee);
+
+
             }
         </script>
+        <style>
+            h2{
+                text-align:left;
+                margin-top:1em;
+                margin-bottom:0.33em;
+            }
+        </style>
     </head>
     <body onload="loadSite(1);fillCheckout();"><!-- For more information on how to use loadSite(), view
         the documentation in JS/script-main.js -->
@@ -61,8 +97,9 @@
         </section>
         <section id="main-section">
             <h1 id="welcome">Checkout:</h1>
+            <h2>Your Cart:</h2>
             <ul>
-                <li>
+                <!-- <li>
                     Username: <span id="result-name"></span>
                 </li>
                 <li>
@@ -73,8 +110,80 @@
                 </li>
                 <li>
                     Total: $<span id="result-total"></span>
-                </li>
+                </li> -->
             </ul>
+            <div id="checkout-cart-container">
+                <div class="checkout-cart-detail">
+                    <span class="checkout-cart-major-label">Subtotal: </span><span class="checkout-cart-major-value" id="subtotal">$-1</span>
+                </div>
+                <div id="checkout-cart-items">
+                    <!-- <div class="checkout-cart-detail">
+                        <span class="checkout-cart-minor-label">Item × 3 </span><span class="checkout-cart-minor-value">$-1</span>
+                    </div> -->
+                </div>
+                <div class="checkout-cart-detail">
+                    <span class="checkout-cart-major-label">Tax: </span><span class="checkout-cart-major-value" id="tax">$-1</span>
+                </div>
+                <div class="checkout-cart-detail">
+                    <span class="checkout-cart-major-label">Delivery Fee: </span><span class="checkout-cart-major-value" id="delivery-fee">$-1</span>
+                </div>
+                <hr />
+                <div class="checkout-cart-detail">
+                    <span class="checkout-cart-major-label">Total: </span><span class="checkout-cart-major-value" id="total">$-1</span>
+                </div>
+            </div>
+            <div id="payment">
+                <h2>Payment</h2>
+                <form id="payment-info">
+                    <fieldset id="fieldset-cardholder">
+                        <div class="input-set">
+                            <input type="text" id="cardholder" name="cardholder" placeholder="Cardholder's Name" required="required" />
+                            <label for="cardholder">Cardholder's Name</label>
+                            <span class="input-error">Please enter the cardholder's name</span>
+                        </div>
+                    </fieldset>
+                    <fieldset id="fieldset-address">
+                        <div class="input-set">
+                            <input type="text" id="streetaddress" name="streetaddress" placeholder="Street Address" required="required" />
+                            <label for="streetaddress">Street Address</label>
+                            <span class="input-error">Please enter your street address</span>
+                        </div>
+                        <div class="input-set">
+                            <input type="text" id="city" name="city" placeholder="City" required="required" />
+                            <label for="city">City</label>
+                            <span class="input-error">Please enter your city</span>
+                        </div>
+                        <div class="input-set">
+                            <input type="text" id="state" name="state" placeholder="State" required="required" />
+                            <label for="state">State</label>
+                            <span class="input-error">Please enter your state</span>
+                        </div>
+                        <div class="input-set">
+                            <input type="text" id="zipcode" name="zipcode" placeholder="Zip Code" required="required" pattern="[0-9]{5}" />
+                            <label for="zipcode">Zip Code</label>
+                            <span class="input-error">Please enter a valid zip code</span>
+                        </div>
+                    </fieldset>
+                    <fieldset id="fieldset-card-info">
+                        <div class="input-set">
+                            <input type="text" id="cardnumber" name="cardnumber" placeholder="Card Number" required="required" pattern="[0-9]{16}" />
+                            <label for="cardnumber">Card Number</label>
+                            <span class="input-error">Please enter a valid card number</span>
+                        </div>
+                        <div class="input-set">
+                            <input type="text" id="expirationdate" name="expirationdate" placeholder="Expiration Date" required="required" pattern="^(0[1-9]|1[0-2])\/?([0-9]{2})$" />
+                            <label for="expirationdate">Expiration Date</label>
+                            <span class="input-error">Please enter a valid expiration date (MM/YY)</span>
+                        </div>
+                        <div class="input-set">
+                            <input type="password" id="cvvnumber" name="cvvnumber" placeholder="CVV Number" required="required" pattern="[0-9]{3}" />
+                            <label for="cvvnumber">CVV Number</label>
+                            <span class="input-error">Please enter a valid CVV number</span>
+                        </div>
+                    </fieldset>
+                    <button type="submit">Order!</button>
+                </form>
+            </div>
         </section>
         <footer>
             <!--

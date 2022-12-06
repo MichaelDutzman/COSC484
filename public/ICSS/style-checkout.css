@@ -1,0 +1,45 @@
+#checkout-cart-container{
+    width:33vw;
+    min-width:500px;
+    border:1px solid var(--main-color);
+    border-radius:3px;
+    padding:0.5em;
+}
+
+.checkout-cart-detail{
+    display:grid;
+    grid-template-columns:auto 4em;
+}
+.checkout-cart-major-label,.checkout-cart-major-value{
+    font-weight:550;
+}
+#checkout-cart-items{
+    padding:0.25em 0;
+}
+.checkout-cart-minor-label{
+    padding-left:1em;
+}
+#total{
+    font-weight:700;
+}
+
+/* Phone */
+/* 320px is the minimum width that needs to be supported */
+@media screen and (max-width:480px){
+
+}
+
+/* Tablet */
+@media screen and (min-width:480px) and (max-width:1024px){
+
+}
+
+/* Desktop */
+@media screen and (min-width:1024px){
+    #fieldset-card-info{
+        display:grid;
+        grid-template-columns:8fr 2fr 4fr;
+        /* grid-template-areas:
+            "street-adress street-adress street-adress"; */
+    }
+}

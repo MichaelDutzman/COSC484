@@ -110,3 +110,10 @@ function listify(array = []){
     list+=", and "+array[(array.length-1)];
     return list;
 }
+
+function moneyFormat(number){
+    return Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+    }).format(number);
+}
