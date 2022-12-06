@@ -2,7 +2,7 @@
 // maybe add ingredients to donut objects
 allDonuts={
     vegan:{
-        veganCinnamonSugar:{
+        veganCinnamon:{
             name:"Vegan Cinnamon Sugar",
             price:6.00,
             amount:0
