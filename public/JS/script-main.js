@@ -117,3 +117,26 @@ function moneyFormat(number){
         currency: "USD",
     }).format(number);
 }
+
+function verifyCardInfo(cardHolder,billingAdress,zipCode,cardNumber,expirationDate,cvvNumber){
+    if(cardHolder.length==0){
+        return false;
+    }
+    if(billingAdress.split(" ").length<3){
+        return false;
+    }
+    if(zipCode.length!=5 || isNaN(parseInt(zipCode))){
+        return false;
+    }
+    if(cardNumber.length!=16 || isNaN(parseInt(cardNumber))){
+        return false;
+    }
+    if(expirationDate.length!="5"){
+        return false;
+    }
+    console.log("checkpoint");
+    if(cvvNumber.length!=3 || isNaN(parseInt(cvvNumber))){
+        return false;
+    }
+    return true;
+}

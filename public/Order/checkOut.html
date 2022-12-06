@@ -76,6 +76,32 @@
 
 
             }
+
+            function processOrder(event,form){
+                event.preventDefault();
+
+                let cardHolder=form["cardnumber"].value;
+                let billingAdress=form["billingadress"].value;
+                let zipCode=form["zipcode"].value;
+                let cardNumber=form["cardnumber"].value;
+                let expirationDate=form["expirationdate"].value;
+                let cvvNumber=form["cvvnumber"].value;
+                // ... define other variables
+
+                var validPaymentInfo=verifyCardInfo(cardHolder,billingAdress,zipCode,cardNumber,expirationDate,cvvNumber);
+                if(validPaymentInfo){
+                    console.log("succ");
+                    showSuccessfulPayment();
+                }
+                else{
+                    console.log("succn't");
+                }
+            }
+
+            function showSuccessfulPayment(){
+                document.getElementById("successful-payment-container").classList.add("onSuccess");
+                document.getElementById("cart-payment-container").classList.add("onSuccess");
+            }
         </script>
         <style>
             h2{
@@ -96,93 +122,103 @@
             </div>
         </section>
         <section id="main-section">
-            <h1 id="welcome">Checkout:</h1>
-            <h2>Your Cart:</h2>
-            <ul>
-                <!-- <li>
-                    Username: <span id="result-name"></span>
-                </li>
-                <li>
-                    Order: <span id="result-order"></span>
-                </li>
-                <li>
-                    Quantity: <span id="result-num"></span>
-                </li>
-                <li>
-                    Total: $<span id="result-total"></span>
-                </li> -->
-            </ul>
-            <div id="checkout-cart-container">
-                <div class="checkout-cart-detail">
-                    <span class="checkout-cart-major-label">Subtotal: </span><span class="checkout-cart-major-value" id="subtotal">$-1</span>
+            <div id="cart-payment-container">
+                <h1 id="welcome">Checkout:</h1>
+                <h2>Your Cart:</h2>
+                <ul>
+                    <!-- <li>
+                        Username: <span id="result-name"></span>
+                    </li>
+                    <li>
+                        Order: <span id="result-order"></span>
+                    </li>
+                    <li>
+                        Quantity: <span id="result-num"></span>
+                    </li>
+                    <li>
+                        Total: $<span id="result-total"></span>
+                    </li> -->
+                </ul>
+                <div id="checkout-cart-container">
+                    <div class="checkout-cart-detail">
+                        <span class="checkout-cart-major-label">Subtotal: </span><span class="checkout-cart-major-value" id="subtotal">$-1</span>
+                    </div>
+                    <div id="checkout-cart-items">
+                        <!-- <div class="checkout-cart-detail">
+                            <span class="checkout-cart-minor-label">Item × 3 </span><span class="checkout-cart-minor-value">$-1</span>
+                        </div> -->
+                    </div>
+                    <div class="checkout-cart-detail">
+                        <span class="checkout-cart-major-label">Tax: </span><span class="checkout-cart-major-value" id="tax">$-1</span>
+                    </div>
+                    <div class="checkout-cart-detail">
+                        <span class="checkout-cart-major-label">Delivery Fee: </span><span class="checkout-cart-major-value" id="delivery-fee">$-1</span>
+                    </div>
+                    <hr />
+                    <div class="checkout-cart-detail">
+                        <span class="checkout-cart-major-label">Total: </span><span class="checkout-cart-major-value" id="total">$-1</span>
+                    </div>
                 </div>
-                <div id="checkout-cart-items">
-                    <!-- <div class="checkout-cart-detail">
-                        <span class="checkout-cart-minor-label">Item × 3 </span><span class="checkout-cart-minor-value">$-1</span>
-                    </div> -->
-                </div>
-                <div class="checkout-cart-detail">
-                    <span class="checkout-cart-major-label">Tax: </span><span class="checkout-cart-major-value" id="tax">$-1</span>
-                </div>
-                <div class="checkout-cart-detail">
-                    <span class="checkout-cart-major-label">Delivery Fee: </span><span class="checkout-cart-major-value" id="delivery-fee">$-1</span>
-                </div>
-                <hr />
-                <div class="checkout-cart-detail">
-                    <span class="checkout-cart-major-label">Total: </span><span class="checkout-cart-major-value" id="total">$-1</span>
+                <div id="payment">
+                    <h2>Payment</h2>
+                    <form id="payment-info" onsubmit="processOrder(event,this);">
+                        <fieldset id="fieldset-cardholder">
+                            <div class="input-set">
+                                <input type="text" id="cardholder" name="cardholder" placeholder="Cardholder's Name" required="required" />
+                                <label for="cardholder">Cardholder's Name</label>
+                                <span class="input-error">Please enter the cardholder's name</span>
+                            </div>
+                        </fieldset>
+                        <fieldset id="fieldset-address">
+                            <div class="input-set">
+                                <input type="text" id="billingadress" name="billingadress" placeholder="Street Address" required="required" />
+                                <label for="billingadress">Billing Address</label>
+                                <span class="input-error">Please enter your street address</span>
+                            </div>
+                            <div class="input-set">
+                                <input type="text" id="city" name="city" placeholder="City" required="required" />
+                                <label for="city">City</label>
+                                <span class="input-error">Please enter your city</span>
+                            </div>
+                            <div class="input-set">
+                                <input type="text" id="state" name="state" placeholder="State" required="required" />
+                                <label for="state">State</label>
+                                <span class="input-error">Please enter your state</span>
+                            </div>
+                            <div class="input-set">
+                                <input type="text" id="zipcode" name="zipcode" placeholder="Zip Code" required="required" pattern="[0-9]{5}" />
+                                <label for="zipcode">Zip Code</label>
+                                <span class="input-error">Please enter a valid zip code</span>
+                            </div>
+                        </fieldset>
+                        <fieldset id="fieldset-card-info">
+                            <div class="input-set">
+                                <input type="text" id="cardnumber" name="cardnumber" placeholder="Card Number" required="required" pattern="[0-9]{16}" />
+                                <label for="cardnumber">Card Number</label>
+                                <span class="input-error">Please enter a valid card number</span>
+                            </div>
+                            <div class="input-set">
+                                <!-- TODO: make this a selection instead of an input -->
+                                <input type="text" id="expirationdate" name="expirationdate" placeholder="Expiration Date" required="required" pattern="^(0[1-9]|1[0-2])\/?([0-9]{2})$" />
+                                <label for="expirationdate">Expiration Date</label>
+                                <span class="input-error">Please enter a valid expiration date (MM/YY)</span>
+                            </div>
+                            <div class="input-set">
+                                <input type="password" id="cvvnumber" name="cvvnumber" placeholder="CVV Number" required="required" pattern="[0-9]{3}" />
+                                <label for="cvvnumber">CVV Number</label>
+                                <span class="input-error">Please enter a valid CVV number</span>
+                            </div>
+                        </fieldset>
+                        <button type="submit">Order!</button>
+                    </form>
                 </div>
             </div>
-            <div id="payment">
-                <h2>Payment</h2>
-                <form id="payment-info">
-                    <fieldset id="fieldset-cardholder">
-                        <div class="input-set">
-                            <input type="text" id="cardholder" name="cardholder" placeholder="Cardholder's Name" required="required" />
-                            <label for="cardholder">Cardholder's Name</label>
-                            <span class="input-error">Please enter the cardholder's name</span>
-                        </div>
-                    </fieldset>
-                    <fieldset id="fieldset-address">
-                        <div class="input-set">
-                            <input type="text" id="streetaddress" name="streetaddress" placeholder="Street Address" required="required" />
-                            <label for="streetaddress">Street Address</label>
-                            <span class="input-error">Please enter your street address</span>
-                        </div>
-                        <div class="input-set">
-                            <input type="text" id="city" name="city" placeholder="City" required="required" />
-                            <label for="city">City</label>
-                            <span class="input-error">Please enter your city</span>
-                        </div>
-                        <div class="input-set">
-                            <input type="text" id="state" name="state" placeholder="State" required="required" />
-                            <label for="state">State</label>
-                            <span class="input-error">Please enter your state</span>
-                        </div>
-                        <div class="input-set">
-                            <input type="text" id="zipcode" name="zipcode" placeholder="Zip Code" required="required" pattern="[0-9]{5}" />
-                            <label for="zipcode">Zip Code</label>
-                            <span class="input-error">Please enter a valid zip code</span>
-                        </div>
-                    </fieldset>
-                    <fieldset id="fieldset-card-info">
-                        <div class="input-set">
-                            <input type="text" id="cardnumber" name="cardnumber" placeholder="Card Number" required="required" pattern="[0-9]{16}" />
-                            <label for="cardnumber">Card Number</label>
-                            <span class="input-error">Please enter a valid card number</span>
-                        </div>
-                        <div class="input-set">
-                            <input type="text" id="expirationdate" name="expirationdate" placeholder="Expiration Date" required="required" pattern="^(0[1-9]|1[0-2])\/?([0-9]{2})$" />
-                            <label for="expirationdate">Expiration Date</label>
-                            <span class="input-error">Please enter a valid expiration date (MM/YY)</span>
-                        </div>
-                        <div class="input-set">
-                            <input type="password" id="cvvnumber" name="cvvnumber" placeholder="CVV Number" required="required" pattern="[0-9]{3}" />
-                            <label for="cvvnumber">CVV Number</label>
-                            <span class="input-error">Please enter a valid CVV number</span>
-                        </div>
-                    </fieldset>
-                    <button type="submit">Order!</button>
-                </form>
+            <div id="successful-payment-container">
+                <div id="successful-payment-header">
+                    <div id="successful-payment-icon"></div>
+                    <h3>Payment Succesful!</h3><br/>
+                </div>
+                <span id="successful-payment-subtitle">Thank you for your payment!</span>
             </div>
         </section>
         <footer>
