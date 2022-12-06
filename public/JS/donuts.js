@@ -285,3 +285,12 @@ allDonuts={
         }
     }
 };
+
+function getDonutByShortName(shortName=""){
+    for(diet in allDonuts){
+        if(allDonuts[diet][shortName]!=undefined){
+            return allDonuts[diet][shortName];
+        }
+    }
+    return null;
+}
