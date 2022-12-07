@@ -14,3 +14,6 @@
 * allows user to checkout and order everything in cart
 * If account is not used user is prompted to enter payment information
 * checkout includes total price, summary of order, and payment info
+
+## Deployment
+* To access website, go to https://stylishdonutdb.web.app/
