@@ -30,4 +30,8 @@ loginForm.addEventListener('submit', function(e){
     //alert("Hello: " + cred.user.displayName);
     location.href = "../Order/default.html";
   })
+  .catch((error) => {
+    const errorMessage = error.message;
+    alert(errorMessage);
+  });
 })
